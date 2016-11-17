@@ -4,5 +4,11 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :password_digest,presence: true
 
+private
+  def find_user_by_id(id)
+    User.find_by(id:id)
 
-end
+  end
+
+
+  end

@@ -2,11 +2,36 @@
 <html>
 <head>
   <title>Look4tutor</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<nav>
+  <ul>
+
+    <% if user_sign_in? %>
+    <h4>Hi,<%=User.find(session[:user_id]).first_name %></h4>
+        <% end%>
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Sign up", new_user_path %></li>
+    <li><%= link_to "Sign in", new_sessions_path %></li>
+    <li><%= link_to "Sign out", sessions_path,method: :delete %></li>
+
+  </ul>
+</nav>
+
+<div>
+  <div>
+    <%= flash[:notice] ? flash[:notice] : "" %>
+  </div>
+  <div>
+    <%= flash[:alert] ? flash[:alert] : "" %>
+  </div>
+</div>
+
+
 
 <%= yield %>
 
