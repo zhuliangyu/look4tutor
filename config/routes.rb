@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  get 'home/index'
 
   root to: "home#index"
 
   resource :sessions
 
   resources :users
+
+  resources :tutors
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

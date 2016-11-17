@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Degree:</strong>
+  <%= @tutor.degree %>
+</p>
+
+<p>
+  <strong>Low price:</strong>
+  <%= @tutor.low_price %>
+</p>
+
+<p>
+  <strong>High price:</strong>
+  <%= @tutor.high_price %>
+</p>
+
+<p>
+  <strong>Cellphone:</strong>
+  <%= @tutor.cellphone %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tutor.user %>
+</p>
+
+<%= link_to 'Edit', edit_tutor_path(@tutor) %> |
+<%= link_to 'Back', tutors_path %>

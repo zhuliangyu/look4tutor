@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :first_name, presence: true
   validates :password_digest,presence: true
+  has_one :tutor,dependent: :destroy
+
 
 private
   def find_user_by_id(id)

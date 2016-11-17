@@ -11,5 +11,12 @@ class ApplicationController < ActionController::Base
   end
   helper_method :user_sign_in?
 
+  def current_user
+    if user_sign_in?
+      User.find(session[:user_id])
+    end
+  end
+  helper_method :current_user
+
 
 end
