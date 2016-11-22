@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :password_digest,presence: true
   has_one :tutor,dependent: :destroy
-
+  has_many :comments
 
 private
   def find_user_by_id(id)

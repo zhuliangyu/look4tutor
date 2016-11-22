@@ -4527,3 +4527,336 @@ Processing by TutorsController#show as HTML
   Rendered tutors/show.html.erb within layouts/application (2.3ms)
   [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
 Completed 200 OK in 78ms (Views: 75.9ms | ActiveRecord: 0.6ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateComments (20161122033743)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (32.3ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "rate" integer, "body" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (6.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20161122033743"]]
+  [1m[36m (6.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'tutors'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserTutorToComments (20161122034351)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "comments" ADD "user_id" integer[0m
+  [1m[35m (13.1ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")
+  [1m[36m (9.5ms)[0m  [1mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "comments" ADD "tutor_id" integer
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_comments_on_tutor_id" ON "comments"  ("tutor_id")[0m
+  [1m[35m (1.2ms)[0m  ALTER TABLE "comments" ADD CONSTRAINT "fk_rails_f8fea87b88"
+FOREIGN KEY ("tutor_id")
+  REFERENCES "tutors" ("id")
+
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20161122034351"]]
+  [1m[35m (6.7ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'tutors'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mComment Load (0.8ms)[0m  SELECT "comments".* FROM "comments"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mTutor Load (0.5ms)[0m  SELECT  "tutors".* FROM "tutors" WHERE "tutors"."user_id" = $1 LIMIT 1  [["user_id", 9]]
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "tutors" WHERE "tutors"."id" = $1[0m  [["id", 11]]
+  [1m[35mSQL (7.1ms)[0m  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'asd@126.com' LIMIT 1[0m
+  [1m[35mSQL (6.5ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "asd@126.com"], ["password_digest", "$2a$10$iY/eIhu.aRD14OoRCkvjTOIHRiX0xJokOoivqX6iBzSDlumeUfWV6"], ["created_at", "2016-11-22 03:49:04.218166"], ["updated_at", "2016-11-22 03:49:04.218166"]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (1.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'asd@126.com' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'asd@126.com' LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'cedf89fa-1c15-4935-b90d-1a7f2650c8b6@abc.com' LIMIT 1[0m
+  [1m[35mSQL (7.9ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "cedf89fa-1c15-4935-b90d-1a7f2650c8b6@abc.com"], ["password_digest", "$2a$10$lKQE0vcr.u4EGBEXFAo2pOMwHktZtIjFd2uwV28.DaBD1Hiet0wkO"], ["created_at", "2016-11-22 03:50:33.759517"], ["updated_at", "2016-11-22 03:50:33.759517"]]
+  [1m[36m (6.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'c894cb8c-430c-4a03-857e-6139f55b52a1@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "c894cb8c-430c-4a03-857e-6139f55b52a1@abc.com"], ["password_digest", "$2a$10$WaTfsk7Uv09Cpjd5Q94Z.Oagu0ko3u1G.SC59ViTvULj4RoSs340y"], ["created_at", "2016-11-22 03:50:33.852822"], ["updated_at", "2016-11-22 03:50:33.852822"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'dba1cfde-be14-4b86-824f-e84b3a620323@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "dba1cfde-be14-4b86-824f-e84b3a620323@abc.com"], ["password_digest", "$2a$10$q82ZjUBuKRmQc11sZRJzy.tzYtylIJM0rjOftlmVC7qPwaXQs4Zqy"], ["created_at", "2016-11-22 03:50:33.927176"], ["updated_at", "2016-11-22 03:50:33.927176"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'a5bd39eb-6352-4b8e-996c-ae74ab21b91d@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "a5bd39eb-6352-4b8e-996c-ae74ab21b91d@abc.com"], ["password_digest", "$2a$10$xPtRrVSTM/jafeqxT9fz/u/b/0z5En73Bu/2/3iyzR1wpfudSHg6S"], ["created_at", "2016-11-22 03:50:34.007559"], ["updated_at", "2016-11-22 03:50:34.007559"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'afa640ce-181c-4a3c-acfe-8411504100c7@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "afa640ce-181c-4a3c-acfe-8411504100c7@abc.com"], ["password_digest", "$2a$10$eI92MLRWrXSpfM5xNCPvEu3FU3/GbLSxGS58wTCods6kb8WRJbCGC"], ["created_at", "2016-11-22 03:50:34.078420"], ["updated_at", "2016-11-22 03:50:34.078420"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ec7a8009-bec3-4dee-a346-b8a1c50c09b0@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "ec7a8009-bec3-4dee-a346-b8a1c50c09b0@abc.com"], ["password_digest", "$2a$10$2IB93nXJx.7ggUt2BVSoZuCRgUlAcxkdh7D9b4OCVoluAZWI/YG3W"], ["created_at", "2016-11-22 03:50:34.148225"], ["updated_at", "2016-11-22 03:50:34.148225"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '4c6da4a0-192a-4d8e-ad46-bc9af0ff9eb4@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "4c6da4a0-192a-4d8e-ad46-bc9af0ff9eb4@abc.com"], ["password_digest", "$2a$10$4vXMMgafMLXBHdUcappQJeLFQM5JV7t1m.OM7yPWTDqE0iHOJY5Yu"], ["created_at", "2016-11-22 03:50:34.220274"], ["updated_at", "2016-11-22 03:50:34.220274"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '6ccad835-84bd-4c7b-981a-0e3c77eb2aa1@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "6ccad835-84bd-4c7b-981a-0e3c77eb2aa1@abc.com"], ["password_digest", "$2a$10$S1xATTQGY5XbFqgtBKg9c.NmhW4Ykcy9XlL4yd2Chvi.jZucUVvXe"], ["created_at", "2016-11-22 03:50:34.291694"], ["updated_at", "2016-11-22 03:50:34.291694"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'e7720534-66ae-4751-98a5-e3fe654c3e7f@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "e7720534-66ae-4751-98a5-e3fe654c3e7f@abc.com"], ["password_digest", "$2a$10$3geBSxmzjcwyD8X6zY4IfuUd7RZN0rEGieXuhjc2kNJkqvA43L3hu"], ["created_at", "2016-11-22 03:50:34.367277"], ["updated_at", "2016-11-22 03:50:34.367277"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '6c279519-da7b-45d8-bfe6-303c5572498b@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "6c279519-da7b-45d8-bfe6-303c5572498b@abc.com"], ["password_digest", "$2a$10$HnNIk3/SLBeeE8azrNNwx.TgBM2ZMq12gtzJkgW.HGiJZtLulcelW"], ["created_at", "2016-11-22 03:50:34.439160"], ["updated_at", "2016-11-22 03:50:34.439160"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mTutor Load (1.3ms)[0m  SELECT "tutors".* FROM "tutors"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '9fc11641-c857-46d0-afce-e34e52291143@abc.com' LIMIT 1[0m
+  [1m[35mSQL (6.7ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "9fc11641-c857-46d0-afce-e34e52291143@abc.com"], ["password_digest", "$2a$10$eGYetxz7/6gPBqtie7meRuiMOaO1DP74BnYuG.2IPcXJOtzKr0fBq"], ["created_at", "2016-11-22 03:52:52.983990"], ["updated_at", "2016-11-22 03:52:52.983990"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '325ec3ea-8b7e-4f3a-906d-56c2a178096e@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "325ec3ea-8b7e-4f3a-906d-56c2a178096e@abc.com"], ["password_digest", "$2a$10$bwbw8x8XVLa82dDgV.Ikc.lFnRG7p4Xj8PchFuhoCnooUWblX1pau"], ["created_at", "2016-11-22 03:52:53.082045"], ["updated_at", "2016-11-22 03:52:53.082045"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'f1673e17-58db-435e-8cb4-69fa065278e2@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "f1673e17-58db-435e-8cb4-69fa065278e2@abc.com"], ["password_digest", "$2a$10$zlGxnfEh3N35hs3Xieu3M.ZIbWwmrAJGqLImt4wHSDQeUIdzBrsAu"], ["created_at", "2016-11-22 03:52:53.166609"], ["updated_at", "2016-11-22 03:52:53.166609"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'd8b53e34-fda7-4b37-b893-5f33740a1ae7@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "d8b53e34-fda7-4b37-b893-5f33740a1ae7@abc.com"], ["password_digest", "$2a$10$KhZIBIdSkuQO1jYlJcvT0Oc4wlkOErWavEQdnfpJZu0cHnjYgS6vO"], ["created_at", "2016-11-22 03:52:53.249212"], ["updated_at", "2016-11-22 03:52:53.249212"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '8911dd2f-502f-4041-af58-5c902df359b0@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "8911dd2f-502f-4041-af58-5c902df359b0@abc.com"], ["password_digest", "$2a$10$w7Ec0MQeFKYvlKH7/x88CeCRErHFO3FBLt0PJ6KkPG7dN8Kh1cr8K"], ["created_at", "2016-11-22 03:52:53.331535"], ["updated_at", "2016-11-22 03:52:53.331535"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'e561d18f-1367-4ce6-a3b8-6163970f2b82@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "e561d18f-1367-4ce6-a3b8-6163970f2b82@abc.com"], ["password_digest", "$2a$10$JTGLzBT2PbLg5zBJLXuAf.3CplyRYk5BqE4R2Q4vPrdK52EUSjrYO"], ["created_at", "2016-11-22 03:52:53.415521"], ["updated_at", "2016-11-22 03:52:53.415521"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '54a3691b-0f8f-45fe-9c8f-bac3c2df3ff2@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "54a3691b-0f8f-45fe-9c8f-bac3c2df3ff2@abc.com"], ["password_digest", "$2a$10$YNyIQ.51XjizKfD6jzossO.p6h6rKUCsVxqXI7Pl0Zhlu9Om3t4f."], ["created_at", "2016-11-22 03:52:53.490519"], ["updated_at", "2016-11-22 03:52:53.490519"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '87ff6eff-ffe9-4c2c-a6da-74b26f7e1add@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "87ff6eff-ffe9-4c2c-a6da-74b26f7e1add@abc.com"], ["password_digest", "$2a$10$W6NZIgru4SxxK.HkaT3yTuYl4loCXyHUEfaWom6olt7DCJ4y/nupW"], ["created_at", "2016-11-22 03:52:53.576095"], ["updated_at", "2016-11-22 03:52:53.576095"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '7303a46b-5d29-469d-ac5e-a2ef14a5b262@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "7303a46b-5d29-469d-ac5e-a2ef14a5b262@abc.com"], ["password_digest", "$2a$10$WTzSXw2Hj7CGiTeXEIodH.j9hrYV8RUup0aLV9HeEl5H7P6md9rdW"], ["created_at", "2016-11-22 03:52:53.649360"], ["updated_at", "2016-11-22 03:52:53.649360"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'f40175c8-74e7-4119-b124-d88d4a060cb5@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "f40175c8-74e7-4119-b124-d88d4a060cb5@abc.com"], ["password_digest", "$2a$10$.UISKgSq6aRZZHGXUPFxhObVvN5YWS8ZHc8FP90Jwy/TMAIQEtAwW"], ["created_at", "2016-11-22 03:52:53.733100"], ["updated_at", "2016-11-22 03:52:53.733100"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'ecc838e1-4240-42c3-b446-c1d9a416184b@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "ecc838e1-4240-42c3-b446-c1d9a416184b@abc.com"], ["password_digest", "$2a$10$DWaLcANvI8GWZmQlm6d0KuvmUIB7pKhvP.a3lFl.3kQt22P41nozK"], ["created_at", "2016-11-22 03:53:47.465697"], ["updated_at", "2016-11-22 03:53:47.465697"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '5a5182e5-1f09-4c9b-b0a1-29314b447539@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "5a5182e5-1f09-4c9b-b0a1-29314b447539@abc.com"], ["password_digest", "$2a$10$ah8H0OzxvpserEYFHsj/LOJGRdbuauKqv8POSalYJ9uhL23O.hpVS"], ["created_at", "2016-11-22 03:53:47.555736"], ["updated_at", "2016-11-22 03:53:47.555736"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '713805ce-2a99-4de0-9fe8-e228bbcc6c1c@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "713805ce-2a99-4de0-9fe8-e228bbcc6c1c@abc.com"], ["password_digest", "$2a$10$jpLhawEiugES4CLxJ1Jmluc3KwcJc2yHSWLgGaXoGpMj6w1uTdzqi"], ["created_at", "2016-11-22 03:53:47.629236"], ["updated_at", "2016-11-22 03:53:47.629236"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'a9cb3742-dd80-4974-a7c0-a775cc0130ee@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "a9cb3742-dd80-4974-a7c0-a775cc0130ee@abc.com"], ["password_digest", "$2a$10$4mDD6YIweQuhmQQCmJ86VumTV4cEBtkhOBMI7LxQ86ZGBJ/Vvyluq"], ["created_at", "2016-11-22 03:53:47.703448"], ["updated_at", "2016-11-22 03:53:47.703448"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '89ad7b71-fd95-42b5-9d65-abe2dfe9291c@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "89ad7b71-fd95-42b5-9d65-abe2dfe9291c@abc.com"], ["password_digest", "$2a$10$Ft7kkGXe6GUJmYcVC5/QNOitEiJ7xmXzlgW70R4DGyGsYTFSXrzwa"], ["created_at", "2016-11-22 03:53:47.778369"], ["updated_at", "2016-11-22 03:53:47.778369"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '5ba13c38-8c23-48d6-b286-5d3a6aa1384d@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "5ba13c38-8c23-48d6-b286-5d3a6aa1384d@abc.com"], ["password_digest", "$2a$10$A2KyKOwRz/G7iq4KYuUKfu.jeVUPmtnIT7yKlA/YSg.UxkW2IOQou"], ["created_at", "2016-11-22 03:53:47.859367"], ["updated_at", "2016-11-22 03:53:47.859367"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '39eed2ab-31c2-410b-9728-86317b7a2537@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "39eed2ab-31c2-410b-9728-86317b7a2537@abc.com"], ["password_digest", "$2a$10$wxYw//yNAKY268mGg2KGEOicAi9PwnSOxjAOxkUjv.FApOzx6Wasy"], ["created_at", "2016-11-22 03:53:47.942351"], ["updated_at", "2016-11-22 03:53:47.942351"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '4709cc38-1858-41df-8a16-17c7be391b47@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "4709cc38-1858-41df-8a16-17c7be391b47@abc.com"], ["password_digest", "$2a$10$VO7DL2lab5455MwLmlSlT.GRzVXCM.R6QbsulPuRdMpsMOScJ4Vym"], ["created_at", "2016-11-22 03:53:48.027686"], ["updated_at", "2016-11-22 03:53:48.027686"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '5cbf0e0f-06ed-4d48-82bb-db4df63dbf07@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "5cbf0e0f-06ed-4d48-82bb-db4df63dbf07@abc.com"], ["password_digest", "$2a$10$YT3WUw2XjE/vn.dgal3e4eXwwyPs76KLtkLzVzNiW8IIxg29lNBH."], ["created_at", "2016-11-22 03:53:48.105218"], ["updated_at", "2016-11-22 03:53:48.105218"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '796acacc-1db9-4de3-bc2c-d8e2e704c981@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "796acacc-1db9-4de3-bc2c-d8e2e704c981@abc.com"], ["password_digest", "$2a$10$JgSLQsVYhFYFmtcbGHEukOrvR/5QICHmhV78NwFCA8yfkQJ6ZaIO."], ["created_at", "2016-11-22 03:53:48.195201"], ["updated_at", "2016-11-22 03:53:48.195201"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 14], ["created_at", "2016-11-22 03:53:48.229641"], ["updated_at", "2016-11-22 03:53:48.229641"]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+  [1m[36mTutor Load (0.7ms)[0m  [1mSELECT "tutors".* FROM "tutors"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '76777469-31e9-4a36-9754-71fc39791f91@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "76777469-31e9-4a36-9754-71fc39791f91@abc.com"], ["password_digest", "$2a$10$6M.Bg7lEXoeyMJm1RNxMDOA6bmHKlSSKjngce0MS1xkac3QzRo8dO"], ["created_at", "2016-11-22 03:54:48.308046"], ["updated_at", "2016-11-22 03:54:48.308046"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '37c4d022-24b7-4dd2-a1f0-384872ba9e40@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "37c4d022-24b7-4dd2-a1f0-384872ba9e40@abc.com"], ["password_digest", "$2a$10$EKKMP5Dzm9oJFMrRIymf0.AsKhw/wboXLJTXnWrHy7RJvLgNw0r7q"], ["created_at", "2016-11-22 03:54:48.394966"], ["updated_at", "2016-11-22 03:54:48.394966"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '23aed9d9-bf14-4824-b2a7-2d992bdb9895@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "23aed9d9-bf14-4824-b2a7-2d992bdb9895@abc.com"], ["password_digest", "$2a$10$501H5E/BqvzDDOEjE7eo3OeLE9ltmFUjoltMDrS.ZuQypPB/Z8o5i"], ["created_at", "2016-11-22 03:54:48.474816"], ["updated_at", "2016-11-22 03:54:48.474816"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '439a8020-a4a6-4b8c-ba87-b0dd669f11a6@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "439a8020-a4a6-4b8c-ba87-b0dd669f11a6@abc.com"], ["password_digest", "$2a$10$ZBGURWYxtcvGhukkhCHqQ.Hb5MMCO5QJ/W4xjthGE2/dB3vBsFdri"], ["created_at", "2016-11-22 03:54:48.558804"], ["updated_at", "2016-11-22 03:54:48.558804"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '08ce98af-372b-47e8-bae6-0a8a153cc5cf@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "08ce98af-372b-47e8-bae6-0a8a153cc5cf@abc.com"], ["password_digest", "$2a$10$MKFY/UAJxB9g6GOzCznTm.6jG..DATkBWRDVmbSfSqL1C/pokX2JK"], ["created_at", "2016-11-22 03:54:48.640311"], ["updated_at", "2016-11-22 03:54:48.640311"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'c3289ef9-d75d-4b13-9a26-a0521ee55171@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "c3289ef9-d75d-4b13-9a26-a0521ee55171@abc.com"], ["password_digest", "$2a$10$mgE4TfKp89CU5nWPpqDUKO3g0Cu4ceYO7KKKeYaYXX.f9nvT72/ku"], ["created_at", "2016-11-22 03:54:48.715599"], ["updated_at", "2016-11-22 03:54:48.715599"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'b9c69fa3-0f9f-44ce-bd01-1454df7c6fbb@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "b9c69fa3-0f9f-44ce-bd01-1454df7c6fbb@abc.com"], ["password_digest", "$2a$10$hMFmt5GthdBb5r9LwWWtUeUFefaJkGZRdGBpBz4wQ6878QW7k9kmG"], ["created_at", "2016-11-22 03:54:48.800900"], ["updated_at", "2016-11-22 03:54:48.800900"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '99dcb4cb-ecf6-4ee4-9006-2d4ee2658125@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "99dcb4cb-ecf6-4ee4-9006-2d4ee2658125@abc.com"], ["password_digest", "$2a$10$jKzkb9kf3rah1Yb1D8r3BODNpg.YgnMz1uC2iMZrvRXE7FwdkAk8G"], ["created_at", "2016-11-22 03:54:48.878798"], ["updated_at", "2016-11-22 03:54:48.878798"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'd987495d-00ea-4f79-bb19-9c6ed18a36ef@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "d987495d-00ea-4f79-bb19-9c6ed18a36ef@abc.com"], ["password_digest", "$2a$10$4SnSSxEuCUd4ZgcjCKWIjOaUvuE3KThOC1.1kHOy.GXo0GRDxYSlu"], ["created_at", "2016-11-22 03:54:48.958468"], ["updated_at", "2016-11-22 03:54:48.958468"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = '9474c687-6db0-4764-8af0-3498cccbc901@abc.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "asd"], ["last_name", "das"], ["email", "9474c687-6db0-4764-8af0-3498cccbc901@abc.com"], ["password_digest", "$2a$10$gL8I0iyGxura2os.KF.hxu/lN.xXTMuNHM9AZ35vstxfKhumU9T6C"], ["created_at", "2016-11-22 03:54:49.035405"], ["updated_at", "2016-11-22 03:54:49.035405"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.7ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 10], ["created_at", "2016-11-22 03:54:49.068303"], ["updated_at", "2016-11-22 03:54:49.068303"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 39], ["created_at", "2016-11-22 03:54:49.088179"], ["updated_at", "2016-11-22 03:54:49.088179"]]
+  [1m[36m (5.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 23], ["created_at", "2016-11-22 03:54:49.098785"], ["updated_at", "2016-11-22 03:54:49.098785"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 9], ["created_at", "2016-11-22 03:54:49.104463"], ["updated_at", "2016-11-22 03:54:49.104463"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 37], ["created_at", "2016-11-22 03:54:49.108433"], ["updated_at", "2016-11-22 03:54:49.108433"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 15], ["created_at", "2016-11-22 03:54:49.112301"], ["updated_at", "2016-11-22 03:54:49.112301"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 26], ["created_at", "2016-11-22 03:54:49.116136"], ["updated_at", "2016-11-22 03:54:49.116136"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 14], ["created_at", "2016-11-22 03:54:49.119965"], ["updated_at", "2016-11-22 03:54:49.119965"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 16], ["created_at", "2016-11-22 03:54:49.123846"], ["updated_at", "2016-11-22 03:54:49.123846"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "asdasd"], ["low_price", 12], ["high_price", 13], ["cellphone", "asdasdasd"], ["user_id", 11], ["created_at", "2016-11-22 03:54:49.127579"], ["updated_at", "2016-11-22 03:54:49.127579"]]
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[36mTutor Load (0.8ms)[0m  [1mSELECT "tutors".* FROM "tutors"[0m
