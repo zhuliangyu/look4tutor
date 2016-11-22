@@ -1,4 +1,4 @@
-<%= form_for(@tutor) do |f| %>
+<%= simple_form_for(@tutor) do |f| %>
   <% if @tutor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
@@ -27,6 +27,8 @@
     <%= f.label :cellphone %><br>
     <%= f.text_field :cellphone %>
   </div>
+
+    <%= f.input :image %>
 
   <div class="actions">
     <%= f.submit %>
