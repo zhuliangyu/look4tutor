@@ -26,6 +26,9 @@ class TutorsController < ApplicationController
   def create
     @tutor = Tutor.new(tutor_params)
 
+    @user=current_user
+
+    @tutor.user=@user
     respond_to do |format|
       if @tutor.save
 
@@ -76,6 +79,6 @@ class TutorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tutor_params
-      params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone, :user_id)
+      params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone)
     end
 end

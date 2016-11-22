@@ -3757,3 +3757,540 @@ Started GET "/" for 127.0.0.1 at 2016-11-21 16:57:08 -0800
 Processing by HomeController#index as HTML
   Rendered home/index.html.erb within layouts/application (0.5ms)
 Completed 200 OK in 75ms (Views: 73.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:15:01 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 2950ms (Views: 2935.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:15:09 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 82ms (Views: 81.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-11-21 17:16:31 -0800
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 80ms (Views: 79.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-11-21 17:16:36 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/DqahqnM4RvjnjFeEER8AKfV7DElYAzuO6ymmdbfRS2jm5CEd+uMESoV+m0/g7CPEwoBdurz7YGb9X1ogB5u/Q==", "email"=>"zhuliangyu@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[35mUser Load (13.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "zhuliangyu@gmail.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 59ms (ActiveRecord: 26.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:16:36 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 61ms (Views: 59.9ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/sessions" for 127.0.0.1 at 2016-11-21 17:16:42 -0800
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"SF+uBEGrmunb3CtpzvHPFbOS3GwGEmly6ZV7ttAgkB0X/qQGn4z34xJX4FrhNgOaB00xK8mBiB1JzKBHhuG7zQ=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:16:42 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 63ms (Views: 62.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-11-21 17:16:44 -0800
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 79ms (Views: 78.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-11-21 17:16:47 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"F4mbIat7RzQ14HcD3abnZ4s9WIJ8JjxWz+M52Cb68+dIKJEjdVwqPvxrvDDyYSvoP+K1xbO13TlvuuIpcDvYNw==", "email"=>"zhuliangyu@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "zhuliangyu@gmail.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:16:47 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 73ms (Views: 72.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2016-11-21 17:16:50 -0800
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (673.1ms)
+  Rendered users/new.html.erb within layouts/application (681.0ms)
+Completed 200 OK in 787ms (Views: 762.0ms | ActiveRecord: 14.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-11-21 17:16:56 -0800
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xkdk7nciAs06mcE+3OnLwYK38vbMA/OdVHz7yjDrq6IB5m7sqQVvx/MSCg3zLgdONmgfsQOQEvL0JSA7ZiqAcg==", "user"=>{"first_name"=>"Giacomo", "last_name"=>"Sims", "email"=>"zhuliangyu@gmail.com", "password"=>"[FILTERED]", "is_tutor"=>"0", "is_admin"=>"0"}, "commit"=>"Create User"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'zhuliangyu@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (12.3ms)[0m  INSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["first_name", "Giacomo"], ["last_name", "Sims"], ["email", "zhuliangyu@gmail.com"], ["password_digest", "$2a$10$1ohGOmfw3Tto5cpf7Wv9YOwbx6B/sFEWPima37Gzz6DM419sJA172"], ["created_at", "2016-11-22 01:16:56.387115"], ["updated_at", "2016-11-22 01:16:56.387115"]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/9
+Completed 302 Found in 106ms (ActiveRecord: 19.1ms)
+
+
+Started GET "/users/9" for 127.0.0.1 at 2016-11-21 17:16:56 -0800
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 71ms (Views: 67.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/9/edit" for 127.0.0.1 at 2016-11-21 17:16:59 -0800
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mUser Load (1.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  Rendered users/_form.html.erb (5.3ms)
+  Rendered users/edit.html.erb within layouts/application (8.9ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 71ms (Views: 66.9ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-11-21 17:17:00 -0800
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 67ms (Views: 65.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-11-21 17:17:03 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2c3ZMDwx4tlAeWeklo50CnSIJZnotJG1x0Y/juck7Q+GbNMy4haP04nyrJe5SbiFwFfI3icncNpnH+R/seXG3w==", "email"=>"zhuliangyu@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "zhuliangyu@gmail.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 74ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:17:03 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 50ms (Views: 49.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:22:50 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 84ms (Views: 82.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tutors/" for 127.0.0.1 at 2016-11-21 17:24:13 -0800
+Processing by TutorsController#index as HTML
+  [1m[35mTutor Load (25.6ms)[0m  SELECT "tutors".* FROM "tutors"
+  Rendered tutors/index.html.erb within layouts/application (28.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 98ms (Views: 64.8ms | ActiveRecord: 26.7ms)
+
+
+Started GET "/tutors/new" for 127.0.0.1 at 2016-11-21 17:24:23 -0800
+Processing by TutorsController#new as HTML
+  Rendered tutors/_form.html.erb (12.1ms)
+  Rendered tutors/new.html.erb within layouts/application (15.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 92ms (Views: 81.1ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/tutors" for 127.0.0.1 at 2016-11-21 17:24:29 -0800
+Processing by TutorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bog36Kk0U9RDtD+YRTywSW2j0Knd/2Yv08d6UwCAGaAxKT3qdxM+3oo/9Ktq+3zG2Xw97hJsh0BznqGiVkEycA==", "tutor"=>{"degree"=>"Et eveniet omnis proident magni aliquid omnis aperiam vero labore saepe quas necessitatibus ullam labore expedita quidem", "low_price"=>"175", "high_price"=>"303", "cellphone"=>"+828-28-5790154", "user_id"=>"hyvyma"}, "commit"=>"Create Tutor"}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (4.8ms)[0m  INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["degree", "Et eveniet omnis proident magni aliquid omnis aperiam vero labore saepe quas necessitatibus ullam labore expedita quidem"], ["low_price", 175], ["high_price", 303], ["cellphone", "+828-28-5790154"], ["user_id", 0], ["created_at", "2016-11-22 01:24:29.669043"], ["updated_at", "2016-11-22 01:24:29.669043"]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 5.2ms)
+
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  insert or update on table "tutors" violates foreign key constraint "fk_rails_d12b6bf098"
+DETAIL:  Key (user_id)=(0) is not present in table "users".
+: INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"):
+  app/controllers/tutors_controller.rb:30:in `block in create'
+  app/controllers/tutors_controller.rb:29:in `create'
+
+
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.0ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (88.0ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (86.2ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.0ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (189.6ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-11-21 17:24:56 -0800
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 67ms (Views: 65.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-11-21 17:24:59 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XpLe4FE1h7AuB2X4yVojs9nkTprLofZx2HzH06Q23RUBM9TijxLquueMrsvmne88bTuj3QQyFx54JRwi8vf2xQ==", "email"=>"zhuliangyu@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "zhuliangyu@gmail.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:24:59 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 49ms (Views: 47.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:25:45 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 122ms (Views: 120.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/rails/info" for 127.0.0.1 at 2016-11-21 17:25:46 -0800
+Processing by Rails::InfoController#index as HTML
+Redirected to http://localhost:3000/rails/info/routes
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes" for 127.0.0.1 at 2016-11-21 17:25:46 -0800
+Processing by Rails::InfoController#routes as HTML
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.3ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/railties-4.2.7.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application (23.7ms)
+Completed 200 OK in 46ms (Views: 44.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:26:02 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 66ms (Views: 65.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tutors/new" for 127.0.0.1 at 2016-11-21 17:26:06 -0800
+Processing by TutorsController#new as HTML
+  Rendered tutors/_form.html.erb (4.0ms)
+  Rendered tutors/new.html.erb within layouts/application (7.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 70ms (Views: 68.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-11-21 17:26:08 -0800
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 71ms (Views: 69.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-11-21 17:26:11 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1VT3aEG/ePMqqL2893VM+cEWTtkeEq1YXiJtOGoF8bOK9f1qn5gV+eMjdo/YsoB2dcmjntGBTDf+e7bJPMTaYw==", "email"=>"zhuliangyu@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1[0m  [["email", "zhuliangyu@gmail.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 77ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:26:11 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.0ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 53ms (Views: 52.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tutors/new" for 127.0.0.1 at 2016-11-21 17:26:14 -0800
+Processing by TutorsController#new as HTML
+  Rendered tutors/_form.html.erb (4.3ms)
+  Rendered tutors/new.html.erb within layouts/application (6.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 72ms (Views: 70.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/tutors" for 127.0.0.1 at 2016-11-21 17:26:16 -0800
+Processing by TutorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8NqNgN7HHnYDO7JUxEqNQQp+ICfY/VxfumLlQtcsxySve4eCAOBzfMqweWfrjUHOvqHNYBduvTAaOz6zge3s9A==", "tutor"=>{"degree"=>"Adipisicing ipsum rerum ipsum facere proident sed", "low_price"=>"762", "high_price"=>"652", "cellphone"=>"+256-92-9989321", "user_id"=>"soqumyveq"}, "commit"=>"Create Tutor"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (2.7ms)[0m  [1mINSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["degree", "Adipisicing ipsum rerum ipsum facere proident sed"], ["low_price", 762], ["high_price", 652], ["cellphone", "+256-92-9989321"], ["user_id", 0], ["created_at", "2016-11-22 01:26:16.718129"], ["updated_at", "2016-11-22 01:26:16.718129"]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 3.0ms)
+
+ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  insert or update on table "tutors" violates foreign key constraint "fk_rails_d12b6bf098"
+DETAIL:  Key (user_id)=(0) is not present in table "users".
+: INSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"):
+  app/controllers/tutors_controller.rb:30:in `block in create'
+  app/controllers/tutors_controller.rb:29:in `create'
+
+
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.3ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (89.4ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (76.5ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (164.5ms)
+
+
+Started GET "/tutors" for 127.0.0.1 at 2016-11-21 17:33:37 -0800
+Processing by TutorsController#index as HTML
+  [1m[36mTutor Load (0.4ms)[0m  [1mSELECT "tutors".* FROM "tutors"[0m
+  Rendered tutors/index.html.erb within layouts/application (2.5ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 81ms (Views: 74.5ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-11-21 17:33:41 -0800
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (1.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 82ms (Views: 81.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-11-21 17:33:44 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Uoq9BMZswoEt/g97aafA80eVE0aAnhPLcEd3tv4PAFENK7cGGEuvi+R1xEhGYAx880r+AU8N8qTQHqxHqM4rgQ==", "email"=>"zhuliangyu@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "zhuliangyu@gmail.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 70ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:33:44 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 54ms (Views: 53.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tutors/new" for 127.0.0.1 at 2016-11-21 17:33:47 -0800
+Processing by TutorsController#new as HTML
+  Rendered tutors/_form.html.erb (6.2ms)
+  Rendered tutors/new.html.erb within layouts/application (9.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 80ms (Views: 67.0ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/tutors" for 127.0.0.1 at 2016-11-21 17:33:50 -0800
+Processing by TutorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1U8bsoYg5Vrt0czsxehaHMI7rjlb3mNZobA4Y3102GmK7hGwWAeIUCRaB9/qL5aTduRDfpRNgjYB6eOSK7XzuQ==", "tutor"=>{"degree"=>"Duis at dolor mollit dolore amet quaerat est consequatur Earum sed", "low_price"=>"559", "high_price"=>"154", "cellphone"=>"+289-39-4703470"}, "commit"=>"Create Tutor"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["degree", "Duis at dolor mollit dolore amet quaerat est consequatur Earum sed"], ["low_price", 559], ["high_price", 154], ["cellphone", "+289-39-4703470"], ["user_id", 9], ["created_at", "2016-11-22 01:33:50.592222"], ["updated_at", "2016-11-22 01:33:50.592222"]]
+  [1m[35m (5.9ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = 'zhuliangyu@gmail.com' AND "users"."id" != 9) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "is_tutor" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["is_tutor", "t"], ["updated_at", "2016-11-22 01:33:50.603604"], ["id", 9]]
+  [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/tutors/10
+Completed 302 Found in 55ms (ActiveRecord: 14.0ms)
+
+
+Started GET "/tutors/10" for 127.0.0.1 at 2016-11-21 17:33:50 -0800
+Processing by TutorsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[35mTutor Load (0.3ms)[0m  SELECT  "tutors".* FROM "tutors" WHERE "tutors"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  Rendered tutors/show.html.erb within layouts/application (5.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 67ms (Views: 64.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tutors/10/edit" for 127.0.0.1 at 2016-11-21 17:34:18 -0800
+Processing by TutorsController#edit as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mTutor Load (0.6ms)[0m  [1mSELECT  "tutors".* FROM "tutors" WHERE "tutors"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  Rendered tutors/_form.html.erb (3.6ms)
+  Rendered tutors/edit.html.erb within layouts/application (6.3ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 71ms (Views: 68.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2016-11-21 17:44:11 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (2.2ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 3258ms (Views: 3240.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for ::1 at 2016-11-21 17:44:17 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 88ms (Views: 86.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:44:58 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (2.4ms)
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 567ms (Views: 546.5ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:44:59 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 76ms (Views: 74.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/rails/info" for 127.0.0.1 at 2016-11-21 17:45:22 -0800
+Processing by Rails::InfoController#index as HTML
+Redirected to http://localhost:3000/rails/info/routes
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/info/routes" for 127.0.0.1 at 2016-11-21 17:45:22 -0800
+Processing by Rails::InfoController#routes as HTML
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.5ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/actionpack-4.2.7.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.4ms)
+  Rendered /Users/macbook/.rvm/gems/ruby-2.3.1@global/gems/railties-4.2.7.1/lib/rails/templates/rails/info/routes.html.erb within layouts/application (68.0ms)
+Completed 200 OK in 87ms (Views: 86.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tutors" for 127.0.0.1 at 2016-11-21 17:45:24 -0800
+Processing by TutorsController#index as HTML
+  [1m[35mTutor Load (0.7ms)[0m  SELECT "tutors".* FROM "tutors"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  Rendered tutors/index.html.erb within layouts/application (31.7ms)
+  [1m[35mCACHE (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 118ms (Views: 109.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2016-11-21 17:45:27 -0800
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 118ms (Views: 115.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2016-11-21 17:45:30 -0800
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cNkj3pm4A3Zky8jRFwoRMF1q8wglIXoM2PHciWZIBxQveCncR59ufK1AA+I4zd2/6bUeT+qym2N4qAd4MIksxA==", "email"=>"zhuliangyu@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT 1  [["email", "zhuliangyu@gmail.com"]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 71ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 17:45:30 -0800
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (0.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 90ms (Views: 88.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tutors/new" for 127.0.0.1 at 2016-11-21 17:45:34 -0800
+Processing by TutorsController#new as HTML
+  Rendered tutors/_form.html.erb (524.8ms)
+  Rendered tutors/new.html.erb within layouts/application (530.2ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 591ms (Views: 589.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/tutors" for 127.0.0.1 at 2016-11-21 17:45:38 -0800
+Processing by TutorsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hxn4ZCIxyALSGQt/Kx4aYvZU5JFZK6BLDf5FM/pFnebYuPJm/BalCBuSwEwE2dbtQosJ1pa4QSStp57CrIS2Ng==", "tutor"=>{"degree"=>"Est cumque iure eiusmod quo temporibus aute ut sint veritatis odio", "low_price"=>"837", "high_price"=>"530", "cellphone"=>"+155-38-1023778"}, "commit"=>"Create Tutor"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "tutors" ("degree", "low_price", "high_price", "cellphone", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["degree", "Est cumque iure eiusmod quo temporibus aute ut sint veritatis odio"], ["low_price", 837], ["high_price", 530], ["cellphone", "+155-38-1023778"], ["user_id", 9], ["created_at", "2016-11-22 01:45:38.388688"], ["updated_at", "2016-11-22 01:45:38.388688"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = 'zhuliangyu@gmail.com' AND "users"."id" != 9) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/tutors/11
+Completed 302 Found in 22ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/tutors/11" for 127.0.0.1 at 2016-11-21 17:45:38 -0800
+Processing by TutorsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mTutor Load (0.3ms)[0m  [1mSELECT  "tutors".* FROM "tutors" WHERE "tutors"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  Rendered tutors/show.html.erb within layouts/application (2.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 57ms (Views: 54.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tutors/11/edit" for 127.0.0.1 at 2016-11-21 17:45:40 -0800
+Processing by TutorsController#edit as HTML
+  Parameters: {"id"=>"11"}
+  [1m[35mTutor Load (0.4ms)[0m  SELECT  "tutors".* FROM "tutors" WHERE "tutors"."id" = $1 LIMIT 1  [["id", 11]]
+  Rendered tutors/_form.html.erb (3.4ms)
+  Rendered tutors/edit.html.erb within layouts/application (6.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 72ms (Views: 69.4ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/tutors/11" for 127.0.0.1 at 2016-11-21 17:45:44 -0800
+Processing by TutorsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1EJScYJxqKizepWVxKzCtPU/y4gB7gTmvAGU0GRkFeaL41hzXFbFonrxXqbraw47QeAmz8595YkcWE8hMqU+Ng==", "tutor"=>{"degree"=>"Laboriosam vitae recusandae Non eiusmod nostrum inventore sed expedita magnam quis commodi", "low_price"=>"444", "high_price"=>"854", "cellphone"=>"+926-22-8756938"}, "commit"=>"Update Tutor", "id"=>"11"}
+  [1m[35mTutor Load (0.4ms)[0m  SELECT  "tutors".* FROM "tutors" WHERE "tutors"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "tutors" SET "degree" = $1, "low_price" = $2, "high_price" = $3, "cellphone" = $4, "updated_at" = $5 WHERE "tutors"."id" = $6  [["degree", "Laboriosam vitae recusandae Non eiusmod nostrum inventore sed expedita magnam quis commodi"], ["low_price", 444], ["high_price", 854], ["cellphone", "+926-22-8756938"], ["updated_at", "2016-11-22 01:45:44.878730"], ["id", 11]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/tutors/11
+Completed 302 Found in 8ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/tutors/11" for 127.0.0.1 at 2016-11-21 17:45:44 -0800
+Processing by TutorsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[35mTutor Load (0.4ms)[0m  SELECT  "tutors".* FROM "tutors" WHERE "tutors"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  Rendered tutors/show.html.erb within layouts/application (1.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 61ms (Views: 59.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tutors" for 127.0.0.1 at 2016-11-21 17:45:48 -0800
+Processing by TutorsController#index as HTML
+  [1m[36mTutor Load (0.9ms)[0m  [1mSELECT "tutors".* FROM "tutors"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  Rendered tutors/index.html.erb within layouts/application (5.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 74ms (Views: 71.5ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/tutors/10" for 127.0.0.1 at 2016-11-21 17:45:52 -0800
+Processing by TutorsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YwwUMq4yTEFX0xdRORtCTFvWmkdfGw35N1RvuejS1Go8rR4wcBUhS55Y3GIW3I7D7wl3AJCI7JaXDbRIvhP/ug==", "id"=>"10"}
+  [1m[36mTutor Load (0.6ms)[0m  [1mSELECT  "tutors".* FROM "tutors" WHERE "tutors"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "tutors" WHERE "tutors"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/tutors
+Completed 302 Found in 7ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/tutors" for 127.0.0.1 at 2016-11-21 17:45:52 -0800
+Processing by TutorsController#index as HTML
+  [1m[36mTutor Load (0.4ms)[0m  [1mSELECT "tutors".* FROM "tutors"[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  Rendered tutors/index.html.erb within layouts/application (4.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 56ms (Views: 54.1ms | ActiveRecord: 0.9ms)
