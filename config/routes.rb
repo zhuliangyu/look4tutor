@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
 
-  resources :comments
   root to: "home#index"
+
 
   resource :sessions
 
   resources :users
 
-  resources :tutors
+  resources :tutors do
+    resources :comments,shallow:true
+
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -10,6 +10,7 @@ class TutorsController < ApplicationController
   # GET /tutors/1
   # GET /tutors/1.json
   def show
+    @comments=Comment.where(tutor:@tutor);
   end
 
   # GET /tutors/new
@@ -74,7 +75,7 @@ class TutorsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tutor
-      @tutor = Tutor.find(params[:id])
+      @tutor = Tutor.find(params[:id]) if params[:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
