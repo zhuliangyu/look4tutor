@@ -30,6 +30,7 @@ gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'simple_form'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'devise', '~> 4.2'
+gem 'mailboxer'
 
 
 # Use Unicorn as the app server

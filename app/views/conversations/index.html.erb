@@ -1,0 +1,9 @@
+<h1>Conversations</h1>
+
+
+<%= button_to "New conversation",new_conversation_path,method: :get %>
+
+<% @conversations.each do |conversation| %>
+    <p><%= link_to conversation.subject, conversation_path(conversation) %></p>
+
+<% end %>

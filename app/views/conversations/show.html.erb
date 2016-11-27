@@ -1,0 +1,22 @@
+<h1>show message</h1>
+
+<h1><%= @conversation.subject %></h1>
+
+<%= form_tag conversation_messages_path(@conversation), method: :post do %>
+
+    <%= text_area_tag :body, nil, :placeholder => 'Please input your reply' %>
+    <%= submit_tag "submit" %>
+
+<% end %>
+
+
+
+<% @receipts.each do |receipt| %>
+    <p><%= receipt.message.body %></p>
+    <p><%= receipt.message.created_at %></p>
+    <p>Sender:<%= receipt.message.sender.name %></p>
+    <hr>
+
+<% end %>
+
+
