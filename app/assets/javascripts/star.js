@@ -3,20 +3,22 @@
  */
 <!-- Latest compiled and minified JavaScript -->
 
-$('#comment-form').ready(
-    function () {
+var star=function () {
+    $("#rateYo").rateYo({
+        rating: 3.6
+    });
 
-        $("#rateYo").rateYo({
-            rating: 3.6
-        });
+    $("#rateYo").click(function () {
+        $('#comment_rate').val($("#rateYo").rateYo("rating"))
 
-        $("#rateYo").click(function () {
-            $('#comment_rate').val($("#rateYo").rateYo("rating"))
+    })
+};
 
-        })
 
-    }
-);
+document.addEventListener("turbolinks:load", function() {
+    star();
+});
+
 
 
 // $(document).ready(

@@ -28,9 +28,16 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 gem 'simple_form'
+
+#activeadmin
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'devise', '~> 4.2'
+
 gem 'mailboxer'
+
+# Fullcalendar::Rails
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 
 # Use Unicorn as the app server
