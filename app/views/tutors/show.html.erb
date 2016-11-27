@@ -36,8 +36,7 @@
 <%= link_to 'Back', tutors_path %>
 
 <div id="calendar"></div>
-
-
+<%= button_to "new event", new_tutor_event_path(@tutor), method: :get %>
 
 <div id="comments">
   <h1>Listing Comments</h1>

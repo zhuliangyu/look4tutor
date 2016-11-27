@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @event.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @event.end_time %>
+</p>
+
+<p>
+  <strong>Tutor:</strong>
+  <%= @event.tutor %>
+</p>
+
+<%= link_to 'delete', event_path(@event),method: :delete %> |
+<%= link_to 'Back', tutor_path(@tutor) %>

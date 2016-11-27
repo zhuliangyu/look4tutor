@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: "home#index"
@@ -9,8 +10,10 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :tutors do
-    resources :comments,shallow:true
+  resources :tutors, shallow: true do
+    resources :comments
+    resources :events
+
 
   end
 
@@ -19,7 +22,6 @@ Rails.application.routes.draw do
     resources :messages
 
   end
-
 
 
   # The priority is based upon order of creation: first created -> highest priority.

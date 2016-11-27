@@ -4,6 +4,9 @@
 
 
 var calendar=function() {
+    var url = window.location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1);
+
      $('#calendar').fullCalendar({
          header: {
              left: 'prev,next today',
@@ -16,7 +19,9 @@ var calendar=function() {
              {
                  $('#calendar').fullCalendar( 'changeView', 'listDay'  );
              }
-         }
+         },
+         events: '/tutors/'+id+'/events.json'
+
      });
 
     // $('#calendar').fullCalendar('next');

@@ -10,6 +10,7 @@ class TutorsController < ApplicationController
   # GET /tutors/1
   # GET /tutors/1.json
   def show
+    @event=Event.new
     @comments=Comment.where(tutor:@tutor);
   end
 
