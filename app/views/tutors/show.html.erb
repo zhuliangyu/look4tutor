@@ -21,14 +21,19 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @tutor.user %>
+  <strong>Email:</strong>
+  <%= @tutor.user.email %>
+</p>
+
+<p>
+  <strong>Introduction:</strong>
+  <%= @tutor.description %>
+
 </p>
 
 <p>
   <strong>Image:</strong>
   <%= image_tag @tutor.image_url %>
-
 
 </p>
 
@@ -55,7 +60,7 @@
         <tr>
           <td><%= comment.rate %></td>
           <td><%= comment.body %></td>
-          <td><%= link_to 'Destroy', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Destroy', comment_path(comment), method: :delete, data: {confirm: 'Are you sure?'} %></td>
         </tr>
     <% end %>
     </tbody>
@@ -64,6 +69,7 @@
   <br>
 
   <%= link_to 'New Comment', new_tutor_comment_path(@tutor) %>
+  <i class="fa fa-star" aria-hidden="true"></i>
 
 
 </div>

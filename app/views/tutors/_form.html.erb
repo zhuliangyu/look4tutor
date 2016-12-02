@@ -1,36 +1,40 @@
 <%= simple_form_for(@tutor) do |f| %>
-  <% if @tutor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
+    <% if @tutor.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
 
-      <ul>
-      <% @tutor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @tutor.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :degree %><br>
+      <%= f.text_field :degree %>
     </div>
-  <% end %>
+    <div class="field">
+      <%= f.label :low_price %><br>
+      <%= f.number_field :low_price %>
+    </div>
+    <div class="field">
+      <%= f.label :high_price %><br>
+      <%= f.number_field :high_price %>
+    </div>
+    <div class="field">
+      <%= f.label :cellphone %><br>
+      <%= f.text_field :cellphone %>
+    </div>
 
-  <div class="field">
-    <%= f.label :degree %><br>
-    <%= f.text_field :degree %>
-  </div>
-  <div class="field">
-    <%= f.label :low_price %><br>
-    <%= f.number_field :low_price %>
-  </div>
-  <div class="field">
-    <%= f.label :high_price %><br>
-    <%= f.number_field :high_price %>
-  </div>
-  <div class="field">
-    <%= f.label :cellphone %><br>
-    <%= f.text_field :cellphone %>
-  </div>
-
+    <div class="field">
+      <%= f.label :Introduction %><br>
+      <%= f.text_area :description %>
+    </div>
     <%= f.input :image %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
