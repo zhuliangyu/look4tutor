@@ -107,8 +107,10 @@ GEM
       jquery-rails (>= 4.0.5, < 5.0.0)
       jquery-ui-rails (>= 5.0.2)
       momentjs-rails (>= 2.9.0)
+    geocoder (1.4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -277,6 +279,8 @@ DEPENDENCIES
   faker
   font-awesome-rails
   fullcalendar-rails
+  geocoder
+  gmaps4rails (~> 2.1, >= 2.1.2)
   hirb
   interactive_editor
   jbuilder (~> 2.0)

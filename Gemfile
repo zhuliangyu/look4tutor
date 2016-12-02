@@ -42,6 +42,9 @@ gem 'momentjs-rails'
 # font-awesome-rails
 gem "font-awesome-rails"
 
+gem 'geocoder'
+gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+
 
 
 # Use Unicorn as the app server

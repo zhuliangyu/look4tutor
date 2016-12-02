@@ -10,6 +10,11 @@ class TutorsController < ApplicationController
   # GET /tutors/1
   # GET /tutors/1.json
   def show
+    @hash = Gmaps4rails.build_markers(@tutor) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
+
     @event=Event.new
     @comments=Comment.where(tutor:@tutor);
   end
@@ -31,6 +36,14 @@ class TutorsController < ApplicationController
     @user=current_user
 
     @tutor.user=@user
+
+
+
+    point=Geocoder.coordinates(@tutor.address)
+    @tutor.latitude=point[0]
+    @tutor.longitude=point[1]
+
+
     respond_to do |format|
       if @tutor.save
 
@@ -81,6 +94,6 @@ class TutorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tutor_params
-      params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone,:image,:description)
+      params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone,:image,:description,:address)
     end
 end

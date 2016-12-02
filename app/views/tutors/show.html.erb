@@ -1,3 +1,7 @@
+
+
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -40,10 +44,23 @@
 <%= link_to 'Edit', edit_tutor_path(@tutor) %> |
 <%= link_to 'Back', tutors_path %>
 
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+
 <div id="calendar"></div>
 <%= button_to "new event", new_tutor_event_path(@tutor), method: :get %>
 
+
+
+
+
+
 <div id="comments">
+
+
   <h1>Listing Comments</h1>
 
   <table>
@@ -80,4 +97,31 @@
 
 
 </div>
+
+
+
+
+<script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers(
+            <%=raw @hash.to_json %>
+
+//            [{
+//                "lat": 0,
+//                "lng": 0,
+//                "picture": {
+//                    "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+//                    "width":  32,
+//                    "height": 32
+//                },
+//                "infowindow": "hello!"
+//            }]
+
+
+        );
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+    });
+</script>
 

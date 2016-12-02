@@ -17,6 +17,8 @@
 //= require moment
 //= require fullcalendar
 //= require turbolinks
+//= require underscore
+//= require gmaps/google
 //= require_tree .
 
 

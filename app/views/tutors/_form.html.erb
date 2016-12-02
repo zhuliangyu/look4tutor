@@ -34,6 +34,12 @@
     </div>
     <%= f.input :image %>
 
+    <div class="field">
+      <%= f.label :adress %><br>
+      <%= f.text_field :address, placeholder: "At least provide the city and postcode." %>
+    </div>
+
+
     <div class="actions">
       <%= f.submit %>
     </div>
