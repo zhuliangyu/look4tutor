@@ -39,6 +39,10 @@ gem 'mailboxer'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
+# font-awesome-rails
+gem "font-awesome-rails"
+
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
