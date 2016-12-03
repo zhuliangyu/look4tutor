@@ -9,26 +9,40 @@
 # User.destroy_all
 
 10.times do
-User.create(first_name:"asd",
-            last_name:"das",
-            email: SecureRandom.uuid.to_s+'@abc.com',
-            password:'123456'
-)
+  User.create(first_name: "asd",
+              last_name: "das",
+              email: SecureRandom.uuid.to_s+'@abc.com',
+              password: '123456'
+  )
 end
 puts 'successfully create user record'
 
 
 10.times do
-Tutor.create(
-    degree:"asdasd",
-    low_price:12,
-    high_price:13,
-    cellphone:'asdasdasd',
-    user:User.all.sample
+  Tutor.create(
+      degree: "asdasd",
+      low_price: 12,
+      high_price: 13,
+      cellphone: 'asdasdasd',
+      user: User.all.sample
 
-)
+  )
 end
 puts 'successfully create Tutor record'
 
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+
+Subject.create(course: "Business")
+Subject.create(course: "Accounting")
+Subject.create(course: "Math")
+Subject.create(course: "Computer Science")
+Subject.create(course: "Physics")
+puts 'successfully create Subject record'
+
+
+10.times do
+  Teach.create(tutor: Tutor.all.sample, subject: Subject.all.sample)
+end
+puts 'successfully create Teach record'

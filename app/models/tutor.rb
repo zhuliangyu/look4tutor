@@ -8,6 +8,8 @@ class Tutor < ActiveRecord::Base
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
 
 
+  has_many :teaches, dependent: :destroy
+  has_many :subjects, through: :teaches
 
   def to_label
     self.user.first_name

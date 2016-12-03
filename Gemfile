@@ -45,6 +45,7 @@ gem "font-awesome-rails"
 gem 'geocoder'
 gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
+gem 'jquery-ui-rails'
 
 
 # Use Unicorn as the app server

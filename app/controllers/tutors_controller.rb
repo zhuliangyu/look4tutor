@@ -3,6 +3,24 @@ class TutorsController < ApplicationController
 
   # GET /tutors
   # GET /tutors.json
+  def search
+    subject_id=params[:subject]
+    region=params[:region]
+
+    point=Geocoder.coordinates(region)
+
+    # near method is from Geocoder to find out the near by object, 20 is the radius from center point
+    @tutors=Subject.find(subject_id).tutors.near(point, 20, :units => :km)
+
+
+
+    render :index
+
+
+
+  end
+
+
   def index
     @tutors = Tutor.all
   end
