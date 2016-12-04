@@ -28,6 +28,12 @@
       <%= f.text_field :cellphone %>
     </div>
 
+    <%= f.association :region,
+                      collection: Region.all,
+                      include_blank: true,
+                      input_html: { class: 'chosen-select' }
+    %>
+
     <%= f.association :subjects,
                       collection: Subject.all,
                       include_blank: true,

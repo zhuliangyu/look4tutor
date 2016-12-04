@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203235250) do
+ActiveRecord::Schema.define(version: 20161204211333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,12 @@ ActiveRecord::Schema.define(version: 20161203235250) do
   add_index "mailboxer_receipts", ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
   add_index "mailboxer_receipts", ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
 
+  create_table "regions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "subjects", force: :cascade do |t|
     t.string   "course"
     t.datetime "created_at", null: false
@@ -158,8 +164,10 @@ ActiveRecord::Schema.define(version: 20161203235250) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "aasm_state",  default: "draft"
+    t.integer  "region_id"
   end
 
+  add_index "tutors", ["region_id"], name: "index_tutors_on_region_id", using: :btree
   add_index "tutors", ["user_id"], name: "index_tutors_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -181,5 +189,6 @@ ActiveRecord::Schema.define(version: 20161203235250) do
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "teaches", "subjects"
   add_foreign_key "teaches", "tutors"
+  add_foreign_key "tutors", "regions"
   add_foreign_key "tutors", "users"
 end

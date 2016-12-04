@@ -1,46 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<div id="tutor-index-left">
-  <table>
-    <thead>
-    <tr>
-      <th>state</th>
-      <th>low price</th>
-      <th>high price</th>
-      <th>cellphone</th>
-      <th>user</th>
-    </tr>
-    </thead>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-7" id="tutor-index-left">
 
-    <tbody>
-    <% @tutors.each do |tutor| %>
-        <tr>
-          <td><%= tutor.aasm_state %></td>
+      <div class="row">
+        <% @tutors.each do |tutor| %>
 
-          <td><%= tutor.low_price %></td>
-          <td><%= tutor.high_price %></td>
-          <td><%= tutor.cellphone %></td>
-          <td><%= tutor.user.name %></td>
-          <td><%= link_to 'Show', tutor %></td>
-          <td><%= link_to 'Edit', edit_tutor_path(tutor) %></td>
-          <td><%= link_to 'Destroy', tutor, method: :delete, data: {confirm: 'Are you sure?'} %></td>
-          <td><%= button_to 'Change State', changeState_path(tutor), method: :get %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
+            <div class="col-sm-6">
 
-  <div class="digg_pagination">
-    <%= will_paginate @posts %>
+
+            <%= tutor.aasm_state %>
+
+            <%= tutor.low_price %>
+            <%= tutor.high_price %>
+            <%= tutor.cellphone %>
+            <%= tutor.user.name %>
+            <%= image_tag tutor.image_url %>
+
+            <%= link_to 'Show', tutor %>
+            <%= link_to 'Edit', edit_tutor_path(tutor) %>
+            <%= link_to 'Destroy', tutor, method: :delete, data: {confirm: 'Are you sure?'} %>
+            <%= button_to 'Change State', changeState_path(tutor), method: :get %>
+
+
+
+        </div>
+
+        <% end %>
+
+      </div>
+
+
+
+
+      <div class="digg_pagination">
+        <%= will_paginate @tutors %>
+      </div>
+
+
+      <%= link_to 'New Tutor', new_tutor_path %>
+
+    </div>
+
+    <div class="col-lg-3" id="map"></div>
+
   </div>
-
-
-  <%= link_to 'New Tutor', new_tutor_path %>
 
 </div>
 
 
-<div id="map"></div>
+
 
 
 
