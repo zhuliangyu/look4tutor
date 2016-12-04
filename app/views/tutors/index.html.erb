@@ -30,12 +30,17 @@
     </tbody>
   </table>
 
+  <div class="digg_pagination">
+    <%= will_paginate @posts %>
+  </div>
+
+
   <%= link_to 'New Tutor', new_tutor_path %>
 
 </div>
 
 
-    <div id="map"></div>
+<div id="map"></div>
 
 
 

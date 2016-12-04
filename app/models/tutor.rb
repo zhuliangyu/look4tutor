@@ -14,6 +14,10 @@ class Tutor < ActiveRecord::Base
   has_many :teaches, dependent: :destroy
   has_many :subjects, through: :teaches
 
+  #for pagination config
+  self.per_page = 10
+
+
   def to_label
     self.user.first_name
   end

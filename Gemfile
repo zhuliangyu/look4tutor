@@ -53,6 +53,8 @@ gem 'aasm', '~> 4.11'
 #course tagging chosen
 gem 'chosen-rails'
 
+gem 'will_paginate', '~> 3.1', '>= 3.1.5'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

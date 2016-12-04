@@ -26,7 +26,7 @@ class TutorsController < ApplicationController
 
   def index
     # @tutors = Tutor.where(aasm_state: :published)
-    @tutors = Tutor.all
+    @tutors = Tutor.paginate(:page => params[:page])
     @hash = Gmaps4rails.build_markers(@tutors) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
