@@ -28,6 +28,17 @@
       <%= f.text_field :cellphone %>
     </div>
 
+    <%= f.association :subjects,
+                      collection: Subject.all,
+                      include_blank: true,
+                      input_html: { class: 'chosen-select' }
+    %>
+
+
+
+
+
+
     <div class="field">
       <%= f.label :Introduction %><br>
       <%= f.text_area :description %>

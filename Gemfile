@@ -50,6 +50,9 @@ gem 'jquery-ui-rails'
 # state machine
 gem 'aasm', '~> 4.11'
 
+#course tagging chosen
+gem 'chosen-rails'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -36,6 +36,14 @@
 </p>
 
 <p>
+  <strong>Course:</strong>
+  <% @subjects.each do |subject| %>
+
+  <%= subject.course %>
+  <% end %>
+</p>
+
+<p>
   <strong>Introduction:</strong>
   <%= @tutor.description %>
 

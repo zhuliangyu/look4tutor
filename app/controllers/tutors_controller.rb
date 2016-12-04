@@ -34,10 +34,13 @@ class TutorsController < ApplicationController
 
     @event=Event.new
     @comments=Comment.where(tutor: @tutor);
+    @subjects=@tutor.subjects
+
   end
 
   # GET /tutors/new
   def new
+
     @tutor = Tutor.new
   end
 
@@ -48,6 +51,12 @@ class TutorsController < ApplicationController
   # POST /tutors
   # POST /tutors.json
   def create
+
+
+    # id=params.require(:tutor).permit(subject_ids:[])
+
+
+
     @tutor = Tutor.new(tutor_params)
 
     @user=current_user
@@ -56,8 +65,11 @@ class TutorsController < ApplicationController
 
 
     point=Geocoder.coordinates(@tutor.address)
-    @tutor.latitude=point[0]
-    @tutor.longitude=point[1]
+    if point
+      @tutor.latitude=point[0]
+      @tutor.longitude=point[1]
+    end
+
 
 
     respond_to do |format|
@@ -125,6 +137,6 @@ class TutorsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def tutor_params
-    params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone, :image, :description, :address)
+    params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone, :image, :description, :address,subject_ids:[])
   end
 end
