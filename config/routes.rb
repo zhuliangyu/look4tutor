@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   post '/search', to: 'tutors#search', as: 'search'
 
+  get '/changeState/:id',to: 'tutors#changeState', as:'changeState'
+
   resource :sessions
 
   resources :users

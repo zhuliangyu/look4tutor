@@ -5,26 +5,27 @@
 <table>
   <thead>
     <tr>
-      <th>Degree</th>
-      <th>Low price</th>
-      <th>High price</th>
-      <th>Cellphone</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>state</th>
+      <th>low price</th>
+      <th>high price</th>
+      <th>cellphone</th>
+      <th>user</th>
     </tr>
   </thead>
 
   <tbody>
     <% @tutors.each do |tutor| %>
       <tr>
-        <td><%= tutor.degree %></td>
+        <td><%= tutor.aasm_state %></td>
+
         <td><%= tutor.low_price %></td>
         <td><%= tutor.high_price %></td>
         <td><%= tutor.cellphone %></td>
-        <td><%= tutor.user %></td>
+        <td><%= tutor.user.name %></td>
         <td><%= link_to 'Show', tutor %></td>
         <td><%= link_to 'Edit', edit_tutor_path(tutor) %></td>
         <td><%= link_to 'Destroy', tutor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Change State',changeState_path(tutor), method: :get %></td>
       </tr>
     <% end %>
   </tbody>

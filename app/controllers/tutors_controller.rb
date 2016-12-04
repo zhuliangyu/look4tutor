@@ -1,5 +1,5 @@
 class TutorsController < ApplicationController
-  before_action :set_tutor, only: [:show, :edit, :update, :destroy]
+  before_action :set_tutor, only: [:show, :edit, :update, :destroy, :changeState]
 
   # GET /tutors
   # GET /tutors.json
@@ -13,15 +13,14 @@ class TutorsController < ApplicationController
     @tutors=Subject.find(subject_id).tutors.near(point, 20, :units => :km)
 
 
-
     render :index
-
 
 
   end
 
 
   def index
+    # @tutors = Tutor.where(aasm_state: :published)
     @tutors = Tutor.all
   end
 
@@ -34,7 +33,7 @@ class TutorsController < ApplicationController
     end
 
     @event=Event.new
-    @comments=Comment.where(tutor:@tutor);
+    @comments=Comment.where(tutor: @tutor);
   end
 
   # GET /tutors/new
@@ -56,7 +55,6 @@ class TutorsController < ApplicationController
     @tutor.user=@user
 
 
-
     point=Geocoder.coordinates(@tutor.address)
     @tutor.latitude=point[0]
     @tutor.longitude=point[1]
@@ -66,9 +64,9 @@ class TutorsController < ApplicationController
       if @tutor.save
 
         if user_sign_in?
-        user=current_user
-        user.is_tutor=true
-        user.save
+          user=current_user
+          user.is_tutor=true
+          user.save
         end
 
         format.html { redirect_to @tutor, notice: 'Tutor was successfully created.' }
@@ -104,14 +102,29 @@ class TutorsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tutor
-      @tutor = Tutor.find(params[:id]) if params[:id]
+  def changeState
+
+    if @tutor.draft?
+      @tutor.publish
+      @tutor.save
+    else
+      @tutor.unpublish
+      @tutor.save
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tutor_params
-      params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone,:image,:description,:address)
-    end
+
+    redirect_to tutors_path
+
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tutor
+    @tutor = Tutor.find(params[:id]) if params[:id]
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tutor_params
+    params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone, :image, :description, :address)
+  end
 end

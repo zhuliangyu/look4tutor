@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203051753) do
+ActiveRecord::Schema.define(version: 20161203235250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,13 +150,14 @@ ActiveRecord::Schema.define(version: 20161203051753) do
     t.integer  "high_price"
     t.string   "cellphone"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "image"
     t.string   "description"
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "aasm_state",  default: "draft"
   end
 
   add_index "tutors", ["user_id"], name: "index_tutors_on_user_id", using: :btree

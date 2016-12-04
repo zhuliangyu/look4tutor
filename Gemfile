@@ -47,6 +47,9 @@ gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
 
 gem 'jquery-ui-rails'
 
+# state machine
+gem 'aasm', '~> 4.11'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
