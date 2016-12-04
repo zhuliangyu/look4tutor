@@ -18,7 +18,7 @@ end
 puts 'successfully create user record'
 
 
-10.times do
+1000.times do
   Tutor.create(
       degree: "asdasd",
       low_price: 12,

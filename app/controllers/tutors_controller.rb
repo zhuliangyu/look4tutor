@@ -5,12 +5,17 @@ class TutorsController < ApplicationController
   # GET /tutors.json
   def search
     subject_id=params[:subject]
-    region=params[:region]
+    region=params[:tags]
 
     point=Geocoder.coordinates(region)
 
     # near method is from Geocoder to find out the near by object, 20 is the radius from center point
-    @tutors=Subject.find(subject_id).tutors.near(point, 20, :units => :km)
+    @tutors=Subject.find(subject_id).tutors.near(point, 50, :units => :km)
+
+    @hash = Gmaps4rails.build_markers(@tutors) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
 
 
     render :index
@@ -22,6 +27,12 @@ class TutorsController < ApplicationController
   def index
     # @tutors = Tutor.where(aasm_state: :published)
     @tutors = Tutor.all
+    @hash = Gmaps4rails.build_markers(@tutors) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
+
+
   end
 
   # GET /tutors/1
@@ -56,7 +67,6 @@ class TutorsController < ApplicationController
     # id=params.require(:tutor).permit(subject_ids:[])
 
 
-
     @tutor = Tutor.new(tutor_params)
 
     @user=current_user
@@ -69,7 +79,6 @@ class TutorsController < ApplicationController
       @tutor.latitude=point[0]
       @tutor.longitude=point[1]
     end
-
 
 
     respond_to do |format|
@@ -137,6 +146,6 @@ class TutorsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def tutor_params
-    params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone, :image, :description, :address,subject_ids:[])
+    params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone, :image, :description, :address, subject_ids: [])
   end
 end

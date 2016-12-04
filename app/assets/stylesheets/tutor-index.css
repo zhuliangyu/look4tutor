@@ -1,0 +1,19 @@
+#tutor-index-left {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    width: 65%;
+    overflow-y: scroll;
+}
+
+
+#map {
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    right: 0;
+    overflow-y: scroll;
+    width: 35%;
+    height: 90%;
+}
