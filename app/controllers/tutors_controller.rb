@@ -10,7 +10,7 @@ class TutorsController < ApplicationController
     point=Geocoder.coordinates(region)
 
     # near method is from Geocoder to find out the near by object, 20 is the radius from center point
-    @tutors=Subject.find(subject_id).tutors.near(point, 50, :units => :km).order('updated_at DESC')
+    @tutors=Subject.find(subject_id).tutors.near(point, 50, :units => :km).paginate(:page => params[:page]).order('updated_at DESC')
 
     @hash = Gmaps4rails.build_markers(@tutors) do |user, marker|
       marker.lat user.latitude

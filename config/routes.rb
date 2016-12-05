@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  post '/search', to: 'tutors#search', as: 'search'
+  get '/search', to: 'tutors#search', as: 'search'
 
   get '/changeState/:id',to: 'tutors#changeState', as:'changeState'
 
