@@ -5,33 +5,72 @@
     <div class="col-lg-7" id="tutor-index-left">
 
       <div class="row">
-        <% @tutors.each do |tutor| %>
+        <% @tutors.each_with_index do |tutor, index| %>
 
-            <div class="col-sm-6">
+            <!--every 2 tutor has a row, it makes sure that all the every 2 tutors are in the the line-->
+            <% if index.odd? %>
+                <div class="row">
+            <% end %>
 
+            <div class="col-sm-6 well" id="each-tutor">
 
-            <%= tutor.aasm_state %>
-
-            <%= tutor.low_price %>
-            <%= tutor.high_price %>
-            <%= tutor.cellphone %>
-            <%= tutor.user.name %>
-            <%= image_tag tutor.image_url %>
-
-            <%= link_to 'Show', tutor %>
-            <%= link_to 'Edit', edit_tutor_path(tutor) %>
-            <%= link_to 'Destroy', tutor, method: :delete, data: {confirm: 'Are you sure?'} %>
-            <%= button_to 'Change State', changeState_path(tutor), method: :get %>
+              <div>
+                <%= image_tag tutor.image_url, class:'img-preview' %>
+              </div>
 
 
+              <%#= tutor.aasm_state %>
 
-        </div>
+
+              <%= link_to tutor.user.name, tutor %>
+
+              <div>
+                <p class="text-warning"> <%= tutor.short_description %></p>
+
+              </div>
+
+              <div>
+                <button type="button" class="btn btn-primary btn-md">
+                  <%= tutor.region.name %>
+                </button>
+
+              </div>
+
+              <div>
+                <% tutor.subjects.each do |subject| %>
+                    <button type="button" class="btn btn-success btn-md">
+                      <%= subject.course %>
+                    </button>
+                <% end %>
+              </div>
+
+              <div>
+                <button type="button" class="btn btn-info btn-md">
+                  <%= link_to "View Profile", tutor %>
+
+                </button>
+
+
+              </div>
+
+
+
+
+
+              <%= link_to 'Edit', edit_tutor_path(tutor) %>
+              <%= link_to 'Destroy', tutor, method: :delete, data: {confirm: 'Are you sure?'} %>
+              <%= button_to 'Change State', changeState_path(tutor), method: :get %>
+
+
+            </div>
+
+            <% if index.odd? %>
+                </div>
+            <% end %>
 
         <% end %>
 
       </div>
-
-
 
 
       <div class="digg_pagination">
@@ -48,10 +87,6 @@
   </div>
 
 </div>
-
-
-
-
 
 
 <script type="text/javascript" charset="utf-8">

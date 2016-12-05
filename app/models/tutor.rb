@@ -36,6 +36,16 @@ class Tutor < ActiveRecord::Base
     self.user.first_name
   end
 
+  def short_description
+    length=self.description.length
+    if length<=50
+      self.description
+    else
+      self.description[0,350]+"..."
+    end
+
+  end
+
 
   aasm do
     state :draft, :initial => true

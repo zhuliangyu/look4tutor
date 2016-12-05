@@ -17,3 +17,16 @@
     width: 35%;
     height: 90%;
 }
+
+#each-tutor{
+    /*border: dashed;*/
+
+}
+
+.img-preview{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+
+}

@@ -10,7 +10,7 @@ class TutorsController < ApplicationController
     point=Geocoder.coordinates(region)
 
     # near method is from Geocoder to find out the near by object, 20 is the radius from center point
-    @tutors=Subject.find(subject_id).tutors.near(point, 50, :units => :km)
+    @tutors=Subject.find(subject_id).tutors.near(point, 50, :units => :km).order('updated_at DESC')
 
     @hash = Gmaps4rails.build_markers(@tutors) do |user, marker|
       marker.lat user.latitude
@@ -26,12 +26,11 @@ class TutorsController < ApplicationController
 
   def index
     # @tutors = Tutor.where(aasm_state: :published)
-    @tutors = Tutor.paginate(:page => params[:page])
+    @tutors = Tutor.paginate(:page => params[:page]).order('updated_at DESC')
     @hash = Gmaps4rails.build_markers(@tutors) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
     end
-
 
   end
 
@@ -51,7 +50,6 @@ class TutorsController < ApplicationController
 
   # GET /tutors/new
   def new
-
     @tutor = Tutor.new
   end
 
