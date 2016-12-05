@@ -1,8 +1,17 @@
 
-
-
-
 <p id="notice"><%= notice %></p>
+
+<div class="container-fluid">
+  <div class="col-lg-6">
+    <%= image_tag @tutor.image_url, class:"tutor-show-image"%>
+  </div>
+  <div class="col-lg-6"></div>
+
+</div>
+
+
+
+
 
 <p>
   <strong>Name:</strong>
@@ -55,7 +64,6 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag @tutor.image_url %>
 
 </p>
 

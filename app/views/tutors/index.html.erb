@@ -82,7 +82,8 @@
 
     </div>
 
-    <div class="col-lg-3" id="map"></div>
+
+      <div class="col-lg-3" id="index-map"></div>
 
   </div>
 
@@ -91,7 +92,7 @@
 
 <script type="text/javascript" charset="utf-8">
     handler = Gmaps.build('Google');
-    handler.buildMap({provider: {}, internal: {id: 'map'}}, function () {
+    handler.buildMap({provider: {}, internal: {id: 'index-map'}}, function () {
         markers = handler.addMarkers(
             <%=raw @hash.to_json %>
         );
