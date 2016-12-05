@@ -1,134 +1,190 @@
-
 <p id="notice"><%= notice %></p>
 
-<div class="container-fluid">
-  <div class="col-lg-6">
-    <%= image_tag @tutor.image_url, class:"tutor-show-image"%>
+<%= hidden_field_tag('tutor_id', @tutor.id) %>
+
+
+
+<!--picture and information table begin-->
+<div class="container-fluid well">
+
+  <div class="row">
+
+    <div class="col-md-8">
+      <div>
+        <%= image_tag @tutor.image_url, class: 'tutor-show-image' %>
+        <%= link_to 'Edit', edit_tutor_path(@tutor) %> |
+        <%= link_to 'Back', tutors_path %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">  <%= @tutor.user.name %>
+        </div>
+        <table class="table">
+          <tbody>
+          <tr class="text-success">
+            <td class="col-sm-2">Degree</td>
+            <td class="col-sm-8"><%= @tutor.degree %>
+            </td>
+          </tr>
+
+          <tr class="text-success">
+            <td class="col-sm-2">Region</td>
+            <td class="col-sm-8"><%= @tutor.region.name %>
+            </td>
+          </tr>
+
+          <tr class="text-success">
+            <td class="col-sm-2">Course</td>
+            <td class="col-sm-8">
+              <% @subjects.each do |subject| %>
+                  <%= subject.course %>
+              <% end %>
+            </td>
+          </tr>
+
+          <tr class="text-success">
+            <td class="col-sm-2">Price</td>
+            <td class="col-sm-8"> $<%= @tutor.low_price %>- $<%= @tutor.high_price %>
+
+            </td>
+          </tr>
+
+          <tr class="text-success">
+            <td class="col-sm-2">Cellphone</td>
+            <td class="col-sm-8"><%= @tutor.cellphone %>
+            </td>
+          </tr>
+
+          <tr class="text-success">
+            <td class="col-sm-2">Email</td>
+            <td class="col-sm-8">
+              <a href="mailto:<%= @tutor.user.email %>"><%= @tutor.user.email %></a>
+
+            </td>
+          </tr>
+
+
+          <tr>
+
+            <td colspan="2">
+
+              <button type="button" class="btn-danger">Send me a message</button>
+            </td>
+
+
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div id="calendar"></div>
+
+      <button type="button" class="btn btn-info">
+
+        <%= link_to "new event", new_tutor_event_path(@tutor), method: :get %>
+
+      </button>
+
+
+    </div>
+
+
   </div>
-  <div class="col-lg-6"></div>
+
 
 </div>
+<!--picture and information table end-->
 
 
+<!--Introduction and map begin-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <div id="show-map" style='width: 300px; height: 400px;'></div>
+
+    </div>
+
+    <div class="col-md-8">
+      <strong>Introduction:</strong>
+      <%= @tutor.description %>
+
+    </div>
+
+  </div>
 
 
-
-<p>
-  <strong>Name:</strong>
-  <%= @tutor.user.name %>
-</p>
-
-
-<p>
-  <strong>Degree:</strong>
-  <%= @tutor.degree %>
-</p>
-
-<p>
-  <strong>Low price:</strong>
-  <%= @tutor.low_price %>
-</p>
-
-<p>
-  <strong>High price:</strong>
-  <%= @tutor.high_price %>
-</p>
-
-<p>
-  <strong>Cellphone:</strong>
-  <%= @tutor.cellphone %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @tutor.user.email %>
-</p>
-
-<p>
-  <strong>Course:</strong>
-  <% @subjects.each do |subject| %>
-
-  <%= subject.course %>
-  <% end %>
-</p>
-
-<p>
-  <strong>Introduction:</strong>
-  <%= @tutor.description %>
-
-</p>
-
-
-<%= link_to 'Edit', edit_tutor_path(@tutor) %> |
-<%= link_to 'Back', tutors_path %>
-
-<p>
-  <strong>Image:</strong>
-
-</p>
-
-
-
-
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
-
-
-<div id="calendar"></div>
-<%= button_to "new event", new_tutor_event_path(@tutor), method: :get %>
+<!--Introduction and map end-->
 
 
 
+<!--comments begin-->
+<div class="container-fluid">
 
 
+  <div class="row">
+    <div class="col-md-8">
+      <button type="button" class="btn btn-info">
+        <%= link_to 'New Comment', new_tutor_comment_path(@tutor) %>
+      </button>
 
-<div id="comments">
+      <button type="button" class="btn btn-info" id="new-comment">
+        Ajax form
+      </button>
+      <div id="ajax-comments-form"></div>
+
+      <div id="comments">
 
 
-  <h1>Listing Comments</h1>
+        <h1>Listing Comments</h1>
+        <table class="table">
 
-  <table>
-    <thead>
-    <tr>
-      <th>Rate</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-    </thead>
+          <tbody id="comment-tbody">
+          <% @comments.each do |comment| %>
+              <tr class="row">
+                <td class="col-sm-2">
+                  <% comment.rate.times do %>
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                  <% end %>
+                </td>
 
-    <tbody>
-    <% @comments.each do |comment| %>
-        <tr>
 
-          <td>
-          <% comment.rate.times do %>
-
-              <i class="fa fa-star" aria-hidden="true"></i>
+                <td class="col-sm-9"><%= comment.body %></td>
+                <td class="col-sm-1"><%= link_to 'Destroy', comment_path(comment), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+              </tr>
           <% end %>
-          </td>
+          </tbody>
+        </table>
 
 
-          <td><%= comment.body %></td>
-          <td><%= link_to 'Destroy', comment_path(comment), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
+      </div>
 
-  <br>
+    </div>
 
-  <%= link_to 'New Comment', new_tutor_comment_path(@tutor) %>
+    <div class="col-md-4">
+      <p> Average star : 4.3</p>
+      <p> Reviews: 35</p>
 
+    </div>
 
+  </div>
 </div>
+<!--comments end-->
+
+
+
+
+
 
 
 
 
 <script type="text/javascript">
     handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    handler.buildMap({provider: {}, internal: {id: 'show-map'}}, function () {
         markers = handler.addMarkers(
             <%=raw @hash.to_json %>
 
@@ -153,3 +209,52 @@
     });
 </script>
 
+<script type="text/javascript" charset="utf-8">
+
+    $('#new-comment').on('click', function () {
+        $('#ajax-comments-form').hide().append('<div id="rateYo"></div><form novalidate="novalidate" class="simple_form new_comment" id="new_comment" action="/tutors/106/comments" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><div class="form-inputs"><div class="form-group hidden comment_rate"><input class="form-control hidden" type="hidden" name="comment[rate]" id="comment_rate"></div><div class="form-group string optional comment_body"><label class="control-label string optional" for="comment_body">Body</label><input class="form-control string optional" type="text" name="comment[body]" id="comment_body"></div></div><div class="form-actions"><input type="submit" id="comment-ajax-submit" name="commit" value="Create Comment" class="btn btn-default"></div></form>').fadeIn(2000);
+
+        $("#rateYo").rateYo({
+            rating: 3.6
+        });
+
+//      $("#rateYo").click(function () {
+//          $('#comment_rate').val($("#rateYo").rateYo("rating"))
+//
+//      });
+
+        $('#comment-ajax-submit').on('click', function (event) {
+            event.preventDefault();
+            rate = $("#rateYo").rateYo("rating");
+            comment_body = $("#comment_body").val();
+
+            $.ajax({
+                url: '/tutors/'+$('#tutor_id').val()+'/comments',
+                type: 'POST',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+                },
+                data: {
+                    comment: {body: comment_body, rate: rate}
+                },
+                success: function (response) {
+                    $('#comment-tbody').append('<tr class="row"><td class="col-sm-2"><i class="fa fa-star" aria-hidden="true"></i></td><td class="col-sm-9">It is so good!</td></tr>')
+
+
+
+                }
+            })
+            ;
+
+
+        })
+
+
+    })
+</script>
+
+
+<script type="text/javascript" charset="utf-8">
+
+
+</script>
