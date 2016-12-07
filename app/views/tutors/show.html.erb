@@ -15,23 +15,32 @@
           <%= image_tag @tutor.image_url, class: 'tutor-show-image' %>
 
           <!--message-->
-          <%= form_tag tutor_direct_message_path(@tutor.user)do %>
-              <p>
-                subject<br/>
-                <%= text_field_tag :subject %>
-              </p>
 
-              <p>
-                Describe your problem:<br/>
-                <%= text_area_tag :body, nil, :size => "70x5" %>
-              </p>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4 col-md-4">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <%= form_tag tutor_direct_message_path(@tutor.user) do %>
 
-              <p>
-                <%= submit_tag 'Submit' %>
-              </p>
+                        <%= text_area_tag :body, nil, class:"form-control counted", placeholder:"Type in your message" ,rows:"5", style:"margin-bottom:10px;" %>
 
 
-          <% end %>
+
+
+                  <!--<textarea class="form-control counted" name="message" placeholder="Type in your message" rows="5" style="margin-bottom:10px;"></textarea>-->
+                      <h6 class="pull-right" id="counter">320 characters remaining</h6>
+                      <button class="btn btn-info" type="submit">Post New Message</button>
+
+                    <% end %>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
           <!--message-->
 
 

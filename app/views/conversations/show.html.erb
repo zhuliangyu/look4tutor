@@ -10,13 +10,63 @@
 <% end %>
 
 
-
+<h2>Message Box</h2>
 <% @receipts.each do |receipt| %>
-    <p><%= receipt.message.body %></p>
-    <p><%= receipt.message.created_at %></p>
-    <p>Sender:<%= receipt.message.sender.name %></p>
-    <hr>
+    <div class="container clearfix">
+      <div class="chat">
+        <div class="chat-history">
+          <ul class="chat-ul">
+
+            <li>
+              <div class="message-data">
+
+                <span class="message-data-name">
+
+                  <i class="fa fa-circle you"></i>
+                            You
+                        </span>
+
+              </div>
+              <div class="message you-message">
+                <p><%= @conversation.subject %></p>
+
+
+              </div>
+            </li>
+            <li class="clearfix">
+              <div class="message-data align-right">
+
+                        <span class="message-data-name">
+
+                          <p>Sender:<%= receipt.message.sender.name %></p>
+
+                             <%= receipt.message.created_at %>
+                        </span>
+
+                <i class="fa fa-circle me"></i>
+              </div>
+
+              <div class="message me-message float-right">                 <p><%= receipt.message.body %></p>
+
+              </div>
+
+            </li>
+
+
+
+          </ul>
+
+        </div> <!-- end chat-history -->
+
+      </div> <!-- end chat -->
+
+    </div>
+
+
 
 <% end %>
+
+
+
 
 

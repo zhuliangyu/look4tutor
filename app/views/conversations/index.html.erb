@@ -1,9 +1,49 @@
-<h1>Conversations</h1>
 
-
+<h2>Message Box</h2>
 <%= button_to "New conversation",new_conversation_path,method: :get %>
 
+
+
 <% @conversations.each do |conversation| %>
-    <p><%= link_to conversation.subject, conversation_path(conversation) %></p>
+
+    <div class="container clearfix">
+      <div class="chat">
+        <div class="chat-history">
+
+          <ul class="chat-ul">
+            <li>
+              <div class="message-data">
+
+                        <span class="message-data-name">
+                            <i class="fa fa-circle you"></i>
+                            You
+                        </span>
+
+              </div>
+              <div class="message you-message">
+                <p><%= link_to conversation.subject, conversation_path(conversation) %></p>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </div> <!-- end chat-history -->
+
+      </div> <!-- end chat -->
+
+    </div>
+
+
+
+
+
+
+
+
+
+
 
 <% end %>
+
+

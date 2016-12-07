@@ -19,7 +19,7 @@ class ConversationsController < ApplicationController
      @recipient=User.find(params[:user_id])
     # @recipient=User.find(params[:user_id])
     @receipt=current_user.send_message(@recipient, params[:body], params[:subject])
-    redirect_to tutor_path(@recipient),notice: "Thanks for your message!"
+    redirect_to tutor_path(@recipient.tutor),notice: "Thanks for your message!"
 
 
   end
