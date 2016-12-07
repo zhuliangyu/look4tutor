@@ -1,18 +1,31 @@
 
 <div>
-  <h1>Home#index</h1>
-  <p>Find me in app/views/home/index.html.erb</p>
-
-  <%= form_tag search_path, :method => 'get' do %>
-      <%= select_tag "subject", options_from_collection_for_select(Subject.all, "id", "course") %>
 
 
+  <div id="search-bar">
+    <h1 style="color:blue">Look4Tutor</h1>
+    <%= form_tag search_path, :method => 'get' do %>
 
-      <%= submit_tag %>
+        <%= select_tag "subject", options_from_collection_for_select(Subject.all, "id", "course") %>
+        <%= submit_tag %>
+        <%= text_field_tag 'tags' %>
+    <% end %>
+  </div>
 
-      <%= text_field_tag 'tags' %>
 
-  <% end %>
+  <!-- video -->
+  <div id="front-page-vedio">
+
+
+    <!--<video autoplay="" muted loop="" class="fillWidth fadeIn animated"-->
+           <!--poster="https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg" id="video-background">-->
+      <!--<source src="University-of-Illinois-at-Urbana-Champaign.mp4">-->
+      <!--Your browser does not support the video tag. I suggest you upgrade your browser.-->
+    <!--</video>-->
+
+  </div>
+  <!-- video -->
+
 
 
 </div>

@@ -1,0 +1,49 @@
+@import url('http://fonts.googleapis.com/css?family=Oswald');
+
+/*body {*/
+/*!*margin: 0;*!*/
+/*!*padding: 0;*!*/
+/*!*background-attachment: fixed;*!*/
+/*!*background-size: cover;*!*/
+/*min-height: 100%;*/
+/*height: auto !important;*/
+/*height: 100%;*/
+/*!* Negative indent footer by its height *!*/
+/*margin: 0 auto -60px;*/
+/*!* Pad bottom by footer height *!*/
+/*padding: 0 0 60px;*/
+
+/*}*/
+
+
+#video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+}
+
+article {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+    z-index: 0;
+}
+
+#search-bar {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: black;
+    font-family: Oswald, sans-serif;
+    text-align: center;
+}
