@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  post '/conversations/:user_id', to: 'conversations#create', as: 'tutor_direct_message'
+
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

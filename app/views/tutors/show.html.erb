@@ -1,178 +1,226 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
 <%= hidden_field_tag('tutor_id', @tutor.id) %>
 
 
+<div class="container-fluid col-lg-10 col-lg-offset-1">
 
-<!--picture and information table begin-->
-<div class="container-fluid well">
+  <!--picture and information table begin-->
+  <div class="container-fluid well">
 
-  <div class="row">
+    <div class="row">
 
-    <div class="col-md-8">
-      <div>
-        <%= image_tag @tutor.image_url, class: 'tutor-show-image' %>
-        <%= link_to 'Edit', edit_tutor_path(@tutor) %> |
-        <%= link_to 'Back', tutors_path %>
-      </div>
-    </div>
+      <div class="col-md-8">
+        <div>
+          <%= image_tag @tutor.image_url, class: 'tutor-show-image' %>
 
-    <div class="col-md-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">  <%= @tutor.user.name %>
-        </div>
-        <table class="table">
-          <tbody>
-          <tr class="text-success">
-            <td class="col-sm-2">Degree</td>
-            <td class="col-sm-8"><%= @tutor.degree %>
-            </td>
-          </tr>
+          <!--message-->
+          <%= form_tag tutor_direct_message_path(@tutor.user)do %>
+              <p>
+                subject<br/>
+                <%= text_field_tag :subject %>
+              </p>
 
-          <tr class="text-success">
-            <td class="col-sm-2">Region</td>
-            <td class="col-sm-8"><%= @tutor.region.name %>
-            </td>
-          </tr>
+              <p>
+                Describe your problem:<br/>
+                <%= text_area_tag :body, nil, :size => "70x5" %>
+              </p>
 
-          <tr class="text-success">
-            <td class="col-sm-2">Course</td>
-            <td class="col-sm-8">
-              <% @subjects.each do |subject| %>
-                  <%= subject.course %>
-              <% end %>
-            </td>
-          </tr>
-
-          <tr class="text-success">
-            <td class="col-sm-2">Price</td>
-            <td class="col-sm-8"> $<%= @tutor.low_price %>- $<%= @tutor.high_price %>
-
-            </td>
-          </tr>
-
-          <tr class="text-success">
-            <td class="col-sm-2">Cellphone</td>
-            <td class="col-sm-8"><%= @tutor.cellphone %>
-            </td>
-          </tr>
-
-          <tr class="text-success">
-            <td class="col-sm-2">Email</td>
-            <td class="col-sm-8">
-              <a href="mailto:<%= @tutor.user.email %>"><%= @tutor.user.email %></a>
-
-            </td>
-          </tr>
+              <p>
+                <%= submit_tag 'Submit' %>
+              </p>
 
 
-          <tr>
-
-            <td colspan="2">
-
-              <button type="button" class="btn-danger">Send me a message</button>
-            </td>
-
-
-          </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-      <div id="calendar"></div>
-
-      <button type="button" class="btn btn-info">
-
-        <%= link_to "new event", new_tutor_event_path(@tutor), method: :get %>
-
-      </button>
-
-
-    </div>
-
-
-  </div>
-
-
-</div>
-<!--picture and information table end-->
-
-
-<!--Introduction and map begin-->
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-4">
-      <div id="show-map" style='width: 300px; height: 400px;'></div>
-
-    </div>
-
-    <div class="col-md-8">
-      <strong>Introduction:</strong>
-      <%= @tutor.description %>
-
-    </div>
-
-  </div>
-
-
-</div>
-<!--Introduction and map end-->
-
-
-
-<!--comments begin-->
-<div class="container-fluid">
-
-
-  <div class="row">
-    <div class="col-md-8">
-      <button type="button" class="btn btn-info">
-        <%= link_to 'New Comment', new_tutor_comment_path(@tutor) %>
-      </button>
-
-      <button type="button" class="btn btn-info" id="new-comment">
-        Ajax form
-      </button>
-      <div id="ajax-comments-form"></div>
-
-      <div id="comments">
-
-
-        <h1>Listing Comments</h1>
-        <table class="table">
-
-          <tbody id="comment-tbody">
-          <% @comments.each do |comment| %>
-              <tr class="row">
-                <td class="col-sm-2">
-                  <% comment.rate.times do %>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                  <% end %>
-                </td>
-
-
-                <td class="col-sm-9"><%= comment.body %></td>
-                <td class="col-sm-1"><%= link_to 'Destroy', comment_path(comment), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-              </tr>
           <% end %>
-          </tbody>
-        </table>
+          <!--message-->
 
+
+          <%= link_to 'Edit', edit_tutor_path(@tutor) %> |
+          <%= link_to 'Back', tutors_path %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">  <%= @tutor.user.name %>
+          </div>
+          <table class="table">
+            <tbody>
+            <tr class="text-success">
+              <td class="col-sm-2">Degree</td>
+              <td class="col-sm-8"><%= @tutor.degree %>
+              </td>
+            </tr>
+
+            <tr class="text-success">
+              <td class="col-sm-2">Region</td>
+              <td class="col-sm-8"><%= @tutor.region.name %>
+              </td>
+            </tr>
+
+            <tr class="text-success">
+              <td class="col-sm-2">Course</td>
+              <td class="col-sm-8">
+                <% @subjects.each do |subject| %>
+                    <%= subject.course %>
+                <% end %>
+              </td>
+            </tr>
+
+            <tr class="text-success">
+              <td class="col-sm-2">Price</td>
+              <td class="col-sm-8"> $<%= @tutor.low_price %>- $<%= @tutor.high_price %>
+
+              </td>
+            </tr>
+
+            <tr class="text-success">
+              <td class="col-sm-2">Cellphone</td>
+              <td class="col-sm-8"><%= @tutor.cellphone %>
+              </td>
+            </tr>
+
+            <tr class="text-success">
+              <td class="col-sm-2">Email</td>
+              <td class="col-sm-8">
+                <a href="mailto:<%= @tutor.user.email %>"><%= @tutor.user.email %></a>
+              </td>
+            </tr>
+
+
+            <tr>
+
+              <td colspan="2">
+
+                <button type="button" class="btn-danger">Send me a message</button>
+              </td>
+
+
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div id="calendar"></div>
+
+        <button type="button" class="btn btn-info">
+
+          <%= link_to "new event", new_tutor_event_path(@tutor), method: :get %>
+
+        </button>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+  <!--picture and information table end-->
+
+
+  <!--Introduction and map begin-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <div id="show-map" style='width: 300px; height: 400px;'></div>
+
+      </div>
+
+      <div class="col-md-8">
+
+        <!--introduction-->
+        <div class="container">
+          <blockquote class="quote-box">
+            <p class="quotation-mark">
+              “
+            </p>
+            <p class="quote-text">
+              <strong>Introduction:</strong>
+              <%= @tutor.description %>
+            </p>
+            <p class="quotation-mark pull-right">
+              ”
+            </p>
+            <hr>
+            <div class="blog-post-actions">
+              <p class="blog-post-bottom pull-left">
+                Abraham Lincoln
+              </p>
+              <p class="blog-post-bottom pull-right">
+                <span class="badge quote-badge">896</span>  ❤
+              </p>
+            </div>
+          </blockquote>
+        </div>
+        <!--introduction-->
 
       </div>
 
     </div>
 
-    <div class="col-md-4">
-      <p> Average star : 4.3</p>
-      <p> Reviews: 35</p>
-
-    </div>
 
   </div>
+  <!--Introduction and map end-->
+
+
+  <!--comments begin-->
+  <div class="container-fluid">
+
+
+    <div class="row">
+      <div class="col-md-8">
+        <button type="button" class="btn btn-info">
+          <%= link_to 'New Comment', new_tutor_comment_path(@tutor) %>
+        </button>
+
+        <button type="button" class="btn btn-info" id="new-comment">
+          Ajax form
+        </button>
+        <div id="ajax-comments-form"></div>
+
+        <div id="comments">
+
+
+          <h1>Listing Comments</h1>
+          <table class="table">
+
+            <tbody id="comment-tbody">
+            <% @comments.each do |comment| %>
+                <tr class="row">
+                  <td class="col-sm-2">
+                    <% comment.rate.times do %>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+
+
+                  <td class="col-sm-9"><%= comment.body %></td>
+                  <td class="col-sm-1"><%= link_to 'Destroy', comment_path(comment), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+        <p> Average star : 4.3</p>
+        <p> Reviews: 35</p>
+
+      </div>
+
+    </div>
+  </div>
+  <!--comments end-->
 </div>
-<!--comments end-->
+
+
 
 
 
@@ -229,7 +277,7 @@
             comment_body = $("#comment_body").val();
 
             $.ajax({
-                url: '/tutors/'+$('#tutor_id').val()+'/comments',
+                url: '/tutors/' + $('#tutor_id').val() + '/comments',
                 type: 'POST',
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
@@ -239,7 +287,6 @@
                 },
                 success: function (response) {
                     $('#comment-tbody').append('<tr class="row"><td class="col-sm-2"><i class="fa fa-star" aria-hidden="true"></i></td><td class="col-sm-9">It is so good!</td></tr>')
-
 
 
                 }
@@ -253,8 +300,3 @@
     })
 </script>
 
-
-<script type="text/javascript" charset="utf-8">
-
-
-</script>
