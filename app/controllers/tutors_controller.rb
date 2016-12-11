@@ -1,4 +1,6 @@
 class TutorsController < ApplicationController
+  before_action :user_authentication, only: [:new,:create]
+
   before_action :set_tutor, only: [:show, :edit, :update, :destroy, :changeState]
 
   # GET /tutors
@@ -137,8 +139,6 @@ class TutorsController < ApplicationController
       @tutor.unpublish
       @tutor.save
     end
-
-
     redirect_to tutors_path
 
   end

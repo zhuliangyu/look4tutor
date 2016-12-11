@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :ser_conversation
+  before_action :ser_conversation, :user_authentication
 
   def index
 
@@ -18,7 +18,6 @@ class MessagesController < ApplicationController
   private
   def ser_conversation
     @conversation=current_user.mailbox.conversations.find(params[:conversation_id])
-
 
   end
 

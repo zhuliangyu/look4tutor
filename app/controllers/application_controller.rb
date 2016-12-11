@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
 
+
+
   private
   def user_sign_in?
     session[:user_id].present?
@@ -17,6 +19,11 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :current_user
+
+  def user_authentication
+    redirect_to root_path unless user_sign_in?
+
+  end
 
 
 end

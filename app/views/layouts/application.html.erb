@@ -31,18 +31,30 @@
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to "Home", root_path %></li>
 
-        <li><%= link_to "tutor List", tutors_path %></li>
-        <li><%= link_to "New tutor", new_tutor_path %></li>
-        <li><%= link_to "My Message", conversations_path %></li>
-        <li><%= link_to "Sign up", new_user_path %></li>
-        <li><%= link_to "Log in", new_sessions_path %></li>
-        <li class="pull-right"><%= link_to "Log out", sessions_path, method: :delete %></li>
+        <li><%= link_to "Tutors", tutors_path %></li>
 
 
 
         <% if user_sign_in? %>
-            <li>Hi,<%= User.find(session[:user_id]).first_name %></li>
+            <li><%= link_to "New tutor", new_tutor_path %></li>
+
+
+            <li>
+              <%= link_to "My Message", conversations_path %>
+            </li>
+            <li class="pull-right"><%= link_to "Log out", sessions_path, method: :delete %></li>
+        <% else %>
+              <li class="pull-right"><%= link_to "Log in", new_sessions_path %></li>
+              <li class="pull-right"><%= link_to "Sign up", new_user_path %></li>
+
+
         <% end %>
+
+
+
+        <%# if user_sign_in? %>
+            <!--<li>Hi,<%#= User.find(session[:user_id]).first_name %></li>-->
+        <%# end %>
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -74,7 +86,7 @@
 
 
 <div class="container-fluid" id="wrap">
-<%= yield %>
+  <%= yield %>
 </div>
 
 <!--footer-->
@@ -96,4 +108,24 @@
 </html>
 
 
-<script type='text/javascript' data-cfasync='false'>window.purechatApi = { l: [], t: [], on: function () { this.l.push(arguments); } }; (function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({c: 'd9b5f689-0eba-4edd-9810-1759e7c91873', f: true }); done = true; } }; })();</script>
+<!--pure chat js library-->
+<script type='text/javascript' data-cfasync='false'>window.purechatApi = {
+    l: [], t: [], on: function () {
+        this.l.push(arguments);
+    }
+};
+(function () {
+    var done = false;
+    var script = document.createElement('script');
+    script.async = true;
+    script.type = 'text/javascript';
+    script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript';
+    document.getElementsByTagName('HEAD').item(0).appendChild(script);
+    script.onreadystatechange = script.onload = function (e) {
+        if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) {
+            var w = new PCWidget({c: 'd9b5f689-0eba-4edd-9810-1759e7c91873', f: true});
+            done = true;
+        }
+    };
+})();</script>
+<!--pure chat js library-->
