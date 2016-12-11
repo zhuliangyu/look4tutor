@@ -43,10 +43,17 @@ class TutorsController < ApplicationController
     end
 
     @event=Event.new
-    @comments=Comment.where(tutor: @tutor);
+    @comments=Comment.where(tutor: @tutor)
     @subjects=@tutor.subjects
 
+    if @comments.any?
+      @avgRate=averageRate
+    else
+      @avgRate=0
+    end
+
   end
+
 
   # GET /tutors/new
   def new
@@ -145,7 +152,19 @@ class TutorsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def tutor_params
 
-    params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone, :image, :description, :address,:region_id,subject_ids: [])
+    params.require(:tutor).permit(:degree, :low_price, :high_price, :cellphone, :image, :description, :address, :region_id, subject_ids: [])
+
+  end
+
+  def averageRate
+    comments=@tutor.comments
+    sum=0
+    comments.each do |comment|
+      sum+=comment.rate
+
+    end
+
+    sum/comments.length
 
   end
 end

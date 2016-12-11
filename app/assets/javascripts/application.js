@@ -19,8 +19,6 @@
 //= require fullcalendar
 //= require chosen-jquery
 //= require tagging
-
-//= require turbolinks
 //= require underscore
 //= require gmaps/google
 //= require_tree .
