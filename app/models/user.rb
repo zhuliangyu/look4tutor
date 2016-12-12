@@ -1,10 +1,14 @@
 class User < ActiveRecord::Base
   has_secure_password
+
   validates :email, uniqueness: true
   validates :first_name, presence: true
   validates :password_digest, presence: true
+
   has_one :tutor, dependent: :destroy
+
   has_many :comments, dependent: :destroy
+
   acts_as_messageable
 
 

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'chattings/index'
+
   post '/conversations/:user_id', to: 'conversations#create', as: 'tutor_direct_message'
 
 

@@ -15,7 +15,6 @@
           <%= image_tag @tutor.image_url, class: 'tutor-show-image' %>
 
           <!--message-->
-
           <div class="container">
             <div class="row">
               <div class="col-sm-4 col-md-4">
@@ -23,6 +22,7 @@
                   <div class="panel-body">
                     <%= form_tag tutor_direct_message_path(@tutor.user) do %>
 
+                        <%= text_field_tag :subject, nil, class: "form-control counted", placeholder: "Type in your subject", style: "margin-bottom:10px;" %>
                         <%= text_area_tag :body, nil, class: "form-control counted", placeholder: "Type in your message", rows: "5", style: "margin-bottom:10px;" %>
 
 
@@ -39,8 +39,6 @@
               </div>
             </div>
           </div>
-
-
           <!--message-->
 
 
@@ -49,6 +47,7 @@
         </div>
       </div>
 
+      <!--tutor info table-->
       <div class="col-md-4">
         <div class="panel panel-primary">
           <div class="panel-heading">  <%= @tutor.user.name %>
@@ -97,15 +96,7 @@
             </tr>
 
 
-            <tr>
 
-              <td colspan="2">
-
-                <button type="button" class="btn-danger">Send me a message</button>
-              </td>
-
-
-            </tr>
 
             </tbody>
           </table>
@@ -121,10 +112,9 @@
 
 
       </div>
-
+      <!--tutor info table-->
 
     </div>
-
 
   </div>
   <!--picture and information table end-->

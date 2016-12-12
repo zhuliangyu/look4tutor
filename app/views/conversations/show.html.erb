@@ -11,6 +11,10 @@
 
 
 <h2>Message Box</h2>
+
+
+
+
 <% @receipts.each do |receipt| %>
     <div class="container clearfix">
       <div class="chat">
@@ -19,20 +23,17 @@
 
             <li>
               <div class="message-data">
-
-                <span class="message-data-name">
-
-                  <i class="fa fa-circle you"></i>
+    <span class="message-data-name">
+      <i class="fa fa-circle you"></i>
                             You
                         </span>
 
               </div>
               <div class="message you-message">
                 <p><%= @conversation.subject %></p>
-
-
               </div>
             </li>
+
             <li class="clearfix">
               <div class="message-data align-right">
 
@@ -40,18 +41,18 @@
 
                           <p>Sender:<%= receipt.message.sender.name %></p>
 
-                             <%= receipt.message.created_at %>
+                          <%= receipt.message.created_at %>
                         </span>
 
                 <i class="fa fa-circle me"></i>
               </div>
 
-              <div class="message me-message float-right">                 <p><%= receipt.message.body %></p>
+              <div class="message me-message float-right">
+                <p><%= receipt.message.body %></p>
 
               </div>
 
             </li>
-
 
 
           </ul>

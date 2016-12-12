@@ -1,63 +1,74 @@
-<%= simple_form_for(@tutor) do |f| %>
-    <% if @tutor.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
 
-          <ul>
-            <% @tutor.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
+<div class="row">
+
+  <div class="col-md-6 col-md-offset-3">
+    <%= simple_form_for(@tutor, class:'form-horizontal') do |f| %>
+        <% if @tutor.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@tutor.errors.count, "error") %> prohibited this tutor from being saved:</h2>
+
+              <ul>
+                <% @tutor.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :degree %><br>
+          <%= f.text_field :degree, class:'form-control'  %>
+        </div>
+        <div class="form-group">
+          <%= f.label :low_price %><br>
+          <%= f.number_field :low_price, class:'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :high_price %><br>
+          <%= f.number_field :high_price, class:'form-control'%>
+        </div >
+        <div class="form-group">
+          <%= f.label :cellphone %><br>
+          <%= f.text_field :cellphone, class:'form-control' %>
+        </div>
+
+        <%= f.association :region,
+                          collection: Region.all,
+                          include_blank: true,
+                          input_html: { class: 'chosen-select' }
+        %>
+
+        <%= f.association :subjects,
+                          collection: Subject.all,
+                          include_blank: true,
+                          input_html: { class: 'chosen-select' }
+        %>
+
+
+
+
+
+
+        <div class="form-group">
+          <%= f.label :Introduction %><br>
+          <%= f.text_area :description, class:'form-control' %>
+        </div>
+        <%= f.input :image %>
+
+        <div class="form-group">
+          <%= f.label :adress %><br>
+          <%= f.text_field :address, placeholder: "At least provide the city and postcode.", class:'form-control' %>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit %>
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :degree %><br>
-      <%= f.text_field :degree %>
-    </div>
-    <div class="field">
-      <%= f.label :low_price %><br>
-      <%= f.number_field :low_price %>
-    </div>
-    <div class="field">
-      <%= f.label :high_price %><br>
-      <%= f.number_field :high_price %>
-    </div>
-    <div class="field">
-      <%= f.label :cellphone %><br>
-      <%= f.text_field :cellphone %>
-    </div>
 
-    <%= f.association :region,
-                      collection: Region.all,
-                      include_blank: true,
-                      input_html: { class: 'chosen-select' }
-    %>
-
-    <%= f.association :subjects,
-                      collection: Subject.all,
-                      include_blank: true,
-                      input_html: { class: 'chosen-select' }
-    %>
+  </div>
 
 
 
-
-
-
-    <div class="field">
-      <%= f.label :Introduction %><br>
-      <%= f.text_area :description %>
-    </div>
-    <%= f.input :image %>
-
-    <div class="field">
-      <%= f.label :adress %><br>
-      <%= f.text_field :address, placeholder: "At least provide the city and postcode." %>
-    </div>
-
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
+</div>

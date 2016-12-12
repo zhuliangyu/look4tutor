@@ -73,7 +73,6 @@ class TutorsController < ApplicationController
 
     # id=params.require(:tutor).permit(subject_ids:[])
 
-
     @tutor = Tutor.new(tutor_params)
 
     @user=current_user

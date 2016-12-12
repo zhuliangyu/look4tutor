@@ -3,7 +3,7 @@
 
 
   <div id="search-bar">
-    <h1 style="color:blue">Look4Tutor</h1>
+    <h1 id="index-title">Look4Tutors</h1>
     <%= form_tag search_path, :method => 'get' do %>
 
         <%= select_tag "subject", options_from_collection_for_select(Subject.all, "id", "course") %>

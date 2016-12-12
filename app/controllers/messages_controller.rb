@@ -6,7 +6,6 @@ class MessagesController < ApplicationController
   end
 
   def create
-
     receipt=current_user.reply_to_conversation(@conversation,params[:body])
     if receipt
       redirect_to conversation_path(@conversation)
