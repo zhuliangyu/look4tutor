@@ -50,8 +50,11 @@ class TutorsController < ApplicationController
 
     if @comments.any?
       @avgRate=averageRate
+      # @rateArr=['50%','40%','30%','20%','10%']
+      @rateArr=getRateArray
     else
       @avgRate=0
+      @rateArr=['0%','0%','0%','0%','0%']
     end
 
   end
@@ -164,6 +167,27 @@ class TutorsController < ApplicationController
     end
 
     sum/comments.length
+
+  end
+
+  def getRateArray
+    total=@comments.length
+    arr=[]
+
+
+    arr.push(percentage(@comments.where(rate: 5).length,total))
+    arr.push(percentage(@comments.where(rate: 4).length,total))
+    arr.push(percentage(@comments.where(rate: 3).length,total))
+    arr.push(percentage(@comments.where(rate: 2).length,total))
+    arr.push(percentage(@comments.where(rate: 1).length,total))
+
+
+    arr
+  end
+
+  def percentage(num,total)
+    new_num=num.to_f/total*100
+    new_num.to_s+'%'
 
   end
 end

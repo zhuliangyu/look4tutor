@@ -10,6 +10,11 @@ class Tutor < ActiveRecord::Base
   has_many :events, dependent: :destroy
   belongs_to :region
 
+  validates :user_id, :presence => true, :uniqueness => true
+
+  # validates :longitude, :presence => true
+  # validates :latitude, :presence => true
+
 
   geocoded_by :geoAddress
   after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
