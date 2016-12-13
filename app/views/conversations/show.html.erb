@@ -1,13 +1,15 @@
-<h1>show message</h1>
-
-<h1><%= @conversation.subject %></h1>
+<h1>Subject: <%= @conversation.subject %></h1>
 
 <%= form_tag conversation_messages_path(@conversation), method: :post do %>
 
-    <%= text_area_tag :body, nil, :placeholder => 'Please input your reply' %>
-    <%= submit_tag "submit" %>
+    <div class="form-group">
+
+
+      <%= text_area_tag :body, nil, :placeholder => 'Please input your reply', class: 'form-control' %>
+      <%= submit_tag "submit" %>
 
 <% end %>
+</div>
 
 
 <h2>Message Box</h2>
@@ -25,7 +27,7 @@
               <div class="message-data">
     <span class="message-data-name">
       <i class="fa fa-circle you"></i>
-                            You
+                            Subject:
                         </span>
 
               </div>
