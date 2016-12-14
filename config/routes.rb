@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
 
+  # routes for api
+  namespace :api do
+    namespace :v1 do
+      resources :tutors, only: [:index, :show]
+    end
+  end
+
+
   get 'chattings/index'
 
   post '/conversations/:user_id', to: 'conversations#create', as: 'tutor_direct_message'
@@ -14,7 +22,7 @@ Rails.application.routes.draw do
 
   get '/search', to: 'tutors#search', as: 'search'
 
-  get '/changeState/:id',to: 'tutors#changeState', as:'changeState'
+  get '/changeState/:id', to: 'tutors#changeState', as: 'changeState'
 
   resource :sessions
 

@@ -55,6 +55,9 @@ gem 'chosen-rails'
 
 gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 
+gem 'active_model_serializers', '~> 0.10.0'
+
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
