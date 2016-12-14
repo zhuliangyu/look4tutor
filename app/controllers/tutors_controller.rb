@@ -141,7 +141,7 @@ class TutorsController < ApplicationController
       @tutor.unpublish
       @tutor.save
     end
-    redirect_to tutors_path
+    redirect_to tutor_path(@tutor)
 
   end
 

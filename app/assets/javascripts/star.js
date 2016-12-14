@@ -26,7 +26,11 @@ $(document).ready(
         });
 
         $("#rateYo").click(function () {
-            $('#comment_rate').val($("#rateYo").rateYo("rating"))
+            // $('#comment_rate').val($("#rateYo").rateYo("rating"))
+
+            var star=$("#rateYo").rateYo("rating");
+
+             $('#comment_rate').val(Math.ceil(star));
 
         })
 
