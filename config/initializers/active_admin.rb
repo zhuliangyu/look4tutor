@@ -223,6 +223,14 @@ ActiveAdmin.setup do |config|
   #     end
   #   end
 
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add label: "The Application", url: "/", priority: 0
+
+
+    end
+  end
+
   # == Download Links
   #
   # You can disable download links on resource listing pages,

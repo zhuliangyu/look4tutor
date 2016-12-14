@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Tangerine" %>
+  <%= stylesheet_link_tag 'application', "https://fonts.googleapis.com/css?family=Gloria Hallelujah" %>
 
   <%= csrf_meta_tags %>
 
@@ -27,9 +28,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Look4Tutor</a>
+
+
+
     </div>
     <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        <li>
+          <a class="navbar-brand pull-left" href="/" id="logo">
+            <!--<img  style="height: 40px;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+                display:inline-block;
+                vertical-align:top;"
+                  src="logo.png"
+                  alt="Smiley face">-->
+            Look4Tutor
+          </a>
+
+        </li>
+
+      </ul>
+
 
       <!--left nav bar-->
       <ul class="nav navbar-nav">
@@ -58,23 +79,25 @@
             <!--<li>Hi,<%#= User.find(session[:user_id]).first_name %></li>-->
         <%# end %>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to "Admin", admin_root_path %></li>
+        <!--<li class="dropdown">-->
+          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>-->
+          <!--<ul class="dropdown-menu">-->
 
 
-            <li class="divider"></li>
-            <li class="dropdown-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
+            <!--<li class="divider"></li>-->
+            <!--<li class="dropdown-header">Nav header</li>-->
+            <!--<li><a href="#">Separated link</a></li>-->
+            <!--<li><a href="#">One more separated link</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
       </ul>
+
       <!--left nav bar-->
 
       <!--pull right nav ul-->
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Admin", admin_root_path %></li>
+
         <% if user_sign_in? %>
 
             <li class="pull-right"><%= link_to "Log out", sessions_path, method: :delete %></li>
