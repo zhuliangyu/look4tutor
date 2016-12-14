@@ -118,7 +118,7 @@
 
             </tr>
             <tr class="text-success">
-              <td class="col-sm-2"> States</td>
+              <td class="col-sm-2"> State(Only for Admin)</td>
               <td class="col-sm-8">
                 <%= @tutor.aasm_state %>
                 <%= button_to 'Change State', changeState_path(@tutor), method: :get %>
@@ -384,9 +384,6 @@
   </div>
   <!--comments end-->
 </div>
-
-
-
 
 
 

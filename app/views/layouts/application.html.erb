@@ -30,13 +30,12 @@
       <a class="navbar-brand" href="#">Look4Tutor</a>
     </div>
     <div class="collapse navbar-collapse">
+
+      <!--left nav bar-->
       <ul class="nav navbar-nav">
         <li class="active"><%= link_to "Home", root_path %></li>
 
         <li><%= link_to "Tutors", tutors_path %></li>
-
-
-
         <% if user_sign_in? %>
             <li><%= link_to "New tutor", new_tutor_path %></li>
             <li>
@@ -45,13 +44,13 @@
             <li>
               <%= link_to "Chatting", chattings_index_path%>
             </li>
-            <li class="pull-right"><%= link_to "Log out", sessions_path, method: :delete %></li>
-        <% else %>
-              <li class="pull-right"><%= link_to "Log in", new_sessions_path %></li>
-              <li class="pull-right"><%= link_to "Sign up", new_user_path %></li>
+            <%end  %>
 
 
-        <% end %>
+
+
+
+
 
 
 
@@ -72,6 +71,25 @@
           </ul>
         </li>
       </ul>
+      <!--left nav bar-->
+
+      <!--pull right nav ul-->
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_sign_in? %>
+
+            <li class="pull-right"><%= link_to "Log out", sessions_path, method: :delete %></li>
+        <% else %>
+            <!--user not sign in-->
+            <li class="pull-right"><%= link_to "Log in", new_sessions_path %></li>
+            <li class="pull-right"><%= link_to "Sign up", new_user_path %></li>
+
+
+        <% end %>
+
+
+      </ul>
+
+
     </div><!--/.nav-collapse -->
   </div>
 </div>
@@ -100,7 +118,6 @@
       <a href="mailto:ricky@enbut.com">Email</a>
       <a href="https://ca.linkedin.com/in/ricky-zhu">Linkedin</a>
       <a href="https://github.com/zhuliangyu">Github</a>
-
 
     </p>
   </div>

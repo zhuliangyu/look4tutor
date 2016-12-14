@@ -1,40 +1,70 @@
 
-<h2>Message Box</h2>
-<%= button_to "New conversation",new_conversation_path,method: :get %>
+<div class="row">
+  <div class="col-md-5 col-md-offset-3 well">
+    <h2>Message Box</h2>
+    <%#= button_to "New conversation",new_conversation_path,method: :get %>
+
+    <!--form for create new message-->
+    <%= form_tag conversations_path, method: :post do %>
+
+        <div>
+          <label for="user">Receiver:</label>
+          <%= select_tag :user_id,options_from_collection_for_select(User.all,:id,:first_name), class:'form-control' %>
+        </div>
+
+        <div>
+          <label for="subject">Subject:</label>
+          <%= text_area_tag :subject, nil, :placeholder => "Subject", class:'form-control' %>
+        </div>
 
 
 
-<% @conversations.each do |conversation| %>
+        <div>
+          <label for="Content">Content:</label>
+          <%= text_area_tag :body, nil, :placeholder => "Body", class:'form-control' %>
+        </div>
 
-    <div class="container clearfix">
-      <div class="chat">
-        <div class="chat-history">
+        <%= submit_tag "submit" %>
+    <% end %>
 
-          <ul class="chat-ul">
-            <li>
-              <div class="message-data">
+    <!--form for create new message-->
+
+  </div>
+
+
+</div>
+
+
+<div class="row">
+  <% @conversations.each do |conversation| %>
+
+      <div class="container clearfix">
+        <div class="chat">
+          <div class="chat-history">
+
+            <ul class="chat-ul">
+              <li>
+                <div class="message-data">
 
                         <span class="message-data-name">
                             <i class="fa fa-circle you"></i>
                             You
                         </span>
 
-              </div>
-              <div class="message you-message">
-                <p><%= link_to conversation.subject, conversation_path(conversation) %></p>
+                </div>
+                <div class="message you-message">
+                  <p><%= link_to conversation.subject, conversation_path(conversation) %></p>
 
-              </div>
-            </li>
+                </div>
+              </li>
 
-          </ul>
+            </ul>
 
-        </div> <!-- end chat-history -->
+          </div> <!-- end chat-history -->
 
-      </div> <!-- end chat -->
+        </div> <!-- end chat -->
 
-    </div>
-
-
+      </div>
 
 
 
@@ -44,6 +74,11 @@
 
 
 
-<% end %>
+
+
+  <% end %>
+
+</div>
+
 
 

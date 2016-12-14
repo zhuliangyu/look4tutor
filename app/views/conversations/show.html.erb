@@ -1,43 +1,48 @@
-<h1>Subject: <%= @conversation.subject %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 well">
+    <h1>Subject: <%= @conversation.subject %></h1>
 
-<%= form_tag conversation_messages_path(@conversation), method: :post do %>
+    <%= form_tag conversation_messages_path(@conversation), method: :post do %>
 
-    <div class="form-group">
+        <div class="form-group">
 
 
-      <%= text_area_tag :body, nil, :placeholder => 'Please input your reply', class: 'form-control' %>
-      <%= submit_tag "submit" %>
+          <%= text_area_tag :body, nil, :placeholder => 'Please input your reply', class: 'form-control' %>
+          <%= submit_tag "Reply" %>
+        </div>
 
-<% end %>
+    <% end %>
+
+
+  </div>
+
+
+
+
 </div>
 
+<div class="row">
+    <% @receipts.each do |receipt| %>
+        <div class="container clearfix">
+          <div class="chat">
+            <div class="chat-history">
+              <ul class="chat-ul">
 
-<h2>Message Box</h2>
-
-
-
-
-<% @receipts.each do |receipt| %>
-    <div class="container clearfix">
-      <div class="chat">
-        <div class="chat-history">
-          <ul class="chat-ul">
-
-            <li>
-              <div class="message-data">
+                <li>
+                  <div class="message-data">
     <span class="message-data-name">
       <i class="fa fa-circle you"></i>
                             Subject:
                         </span>
 
-              </div>
-              <div class="message you-message">
-                <p><%= @conversation.subject %></p>
-              </div>
-            </li>
+                  </div>
+                  <div class="message you-message">
+                    <p><%= @conversation.subject %></p>
+                  </div>
+                </li>
 
-            <li class="clearfix">
-              <div class="message-data align-right">
+                <li class="clearfix">
+                  <div class="message-data align-right">
 
                         <span class="message-data-name">
 
@@ -46,28 +51,33 @@
                           <%= receipt.message.created_at %>
                         </span>
 
-                <i class="fa fa-circle me"></i>
-              </div>
+                    <i class="fa fa-circle me"></i>
+                  </div>
 
-              <div class="message me-message float-right">
-                <p><%= receipt.message.body %></p>
+                  <div class="message me-message float-right">
+                    <p><%= receipt.message.body %></p>
 
-              </div>
+                  </div>
 
-            </li>
-
-
-          </ul>
-
-        </div> <!-- end chat-history -->
-
-      </div> <!-- end chat -->
-
-    </div>
+                </li>
 
 
+              </ul>
 
-<% end %>
+            </div> <!-- end chat-history -->
+
+          </div> <!-- end chat -->
+
+        </div>
+
+
+
+    <% end %>
+
+
+</div>
+
+
 
 
 
