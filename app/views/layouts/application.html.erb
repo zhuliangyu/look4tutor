@@ -33,7 +33,7 @@
 
       <!--left nav bar-->
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Home", root_path %></li>
 
         <li><%= link_to "Tutors", tutors_path %></li>
         <% if user_sign_in? %>
@@ -149,3 +149,26 @@
     };
 })();</script>
 <!--pure chat js library-->
+
+
+<!--hover change nav-->
+<script type="text/javascript" charset="utf-8">
+    $('li a').hover(
+
+        function () {
+
+            $(this).parent('li').addClass('active');
+
+        },
+
+        function () {
+
+            $(this).parent('li').removeClass('active');
+
+        }
+
+
+    );
+</script>
+
+<!--hover change nav-->
