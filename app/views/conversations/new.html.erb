@@ -3,12 +3,12 @@
 <%= form_tag conversations_path, method: :post do %>
 
     <div>
-      <%= select_tag :user_id,options_from_collection_for_select(User.all,:id,:first_name) %>
+      <%= select_tag :user_id,options_from_collection_for_select(User.where(is_tutor:true),:id,:first_name) %>
     </div>
 
-    <div><%= text_area_tag :subject, nil, :placeholder => "Subject" %>
+    <div>
+      <%= text_area_tag :subject, nil, :placeholder => "Subject" %>
     </div>
-
 
 
     <div>

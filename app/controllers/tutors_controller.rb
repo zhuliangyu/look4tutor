@@ -73,12 +73,13 @@ class TutorsController < ApplicationController
   # POST /tutors.json
   def create
 
-
     # id=params.require(:tutor).permit(subject_ids:[])
 
     @tutor = Tutor.new(tutor_params)
 
     @user=current_user
+
+    @user.is_tutor=true
 
     @tutor.user=@user
 
