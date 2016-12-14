@@ -57,6 +57,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.5'
 
 gem 'active_model_serializers', '~> 0.10.0'
 
+gem 'stripe'
 
 
 # Use Unicorn as the app server
