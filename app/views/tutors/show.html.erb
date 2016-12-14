@@ -128,19 +128,48 @@
             </tr>
 
 
-
-
             </tbody>
           </table>
         </div>
 
         <div id="calendar"></div>
 
-        <button type="button" class="btn btn-info">
+        <!--<button type="button" class="btn btn-info">-->
 
-          <%= link_to "new event", new_tutor_event_path(@tutor), method: :get %>
+        <!--<%= link_to "new event", new_tutor_event_path(@tutor), method: :get %>-->
 
-        </button>
+        <!--</button>-->
+
+        <!--test-->
+        <div id="modal-test">
+          <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create a new
+            event
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">New event</h4>
+                </div>
+                <div class="modal-body">
+                  <h1>Welcome to create a new event</h1>
+                  <%= render 'events/form' %>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--test-->
 
 
       </div>
@@ -205,7 +234,7 @@
 
 
       <!--<button type="button" class="btn btn-info" id="new-comment">-->
-        <!--Ajax form-->
+      <!--Ajax form-->
       <!--</button>-->
       <!--<div id="ajax-comments-form"></div>-->
 
@@ -262,8 +291,6 @@
 
             </div>
             <!--show rate star-->
-
-
 
 
             <!--<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">-->
