@@ -29,3 +29,5 @@ class TutorSerializer < ActiveModel::Serializer
   has_many :comments
   has_many :events
 end
+
+
