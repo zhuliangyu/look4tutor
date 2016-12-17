@@ -61,6 +61,8 @@ gem 'stripe'
 
 gem 'rails_12factor', group: :production
 
+gem 'faker'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'
