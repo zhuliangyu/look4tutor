@@ -7,7 +7,7 @@
     <%= form_tag search_path, :method => 'get' do %>
 
         <%= select_tag "subject", options_from_collection_for_select(Subject.all, "id", "course") %>
-        <%= text_field_tag 'tags' %>
+        <%= text_field_tag 'tags',nil, placeholder: 'Location' %>
         <%= submit_tag "Search"%>
 
   <% end %>
