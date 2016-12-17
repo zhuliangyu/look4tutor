@@ -21,9 +21,18 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def user_authentication
-    redirect_to root_path unless user_sign_in?
+    redirect_to new_sessions_path unless user_sign_in?
+  end
+
+  def is_admin?
+    if user_sign_in? && User.find(session[:user_id]).is_admin?
+      redirect_to root_path, alert: "Please login first!"
+    else
+
+    end
 
   end
+  helper_method :is_admin?
 
 
 end

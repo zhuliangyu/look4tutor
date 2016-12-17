@@ -15,7 +15,7 @@
             <div class="col-sm-6 well" id="each-tutor">
 
               <div>
-                <%= image_tag tutor.image_url, class:'img-preview' %>
+                <%= image_tag tutor.image_url, class: 'img-preview' %>
               </div>
 
 
@@ -52,14 +52,11 @@
 
 
               </div>
-
-
-
-
-
-              <%= link_to 'Edit', edit_tutor_path(tutor) %>
-              <%= link_to 'Destroy', tutor, method: :delete, data: {confirm: 'Are you sure?'} %>
-              <%#= button_to 'Change State', changeState_path(tutor), method: :get %>
+              <% if is_admin? %>
+                  <%= link_to 'Edit', edit_tutor_path(tutor) %>
+                  <%= link_to 'Destroy', tutor, method: :delete, data: {confirm: 'Are you sure?'} %>
+                  <%#= button_to 'Change State', changeState_path(tutor), method: :get %>
+              <% end %>
 
 
             </div>
@@ -83,7 +80,7 @@
     </div>
 
 
-      <div class="col-lg-3" id="index-map"></div>
+    <div class="col-lg-3" id="index-map"></div>
 
   </div>
 

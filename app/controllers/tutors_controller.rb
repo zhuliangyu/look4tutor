@@ -1,5 +1,5 @@
 class TutorsController < ApplicationController
-  before_action :user_authentication, only: [:new,:create]
+  before_action :user_authentication, only: [:new, :create, :edit,:update,:destroy,:changeState]
 
   before_action :set_tutor, only: [:show, :edit, :update, :destroy, :changeState]
 
@@ -54,7 +54,7 @@ class TutorsController < ApplicationController
       @rateArr=getRateArray
     else
       @avgRate=0
-      @rateArr=['0%','0%','0%','0%','0%']
+      @rateArr=['0%', '0%', '0%', '0%', '0%']
     end
 
   end
@@ -174,19 +174,17 @@ class TutorsController < ApplicationController
   def getRateArray
     total=@comments.length
     arr=[]
-
-
-    arr.push(percentage(@comments.where(rate: 5).length,total))
-    arr.push(percentage(@comments.where(rate: 4).length,total))
-    arr.push(percentage(@comments.where(rate: 3).length,total))
-    arr.push(percentage(@comments.where(rate: 2).length,total))
-    arr.push(percentage(@comments.where(rate: 1).length,total))
-
-
+    arr.push(percentage(@comments.where(rate: 5).length, total))
+    arr.push(percentage(@comments.where(rate: 4).length, total))
+    arr.push(percentage(@comments.where(rate: 3).length, total))
+    arr.push(percentage(@comments.where(rate: 2).length, total))
+    arr.push(percentage(@comments.where(rate: 1).length, total))
+    # for return
     arr
+
   end
 
-  def percentage(num,total)
+  def percentage(num, total)
     new_num=num.to_f/total*100
     new_num.to_s+'%'
 

@@ -255,7 +255,10 @@
 
 
                   <td class="col-sm-9"><%= comment.body %></td>
-                  <td class="col-sm-1"><%= link_to 'Destroy', comment_path(comment), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+
+                  <% if is_admin? %>
+                      <td class="col-sm-1"><%= link_to 'Destroy', comment_path(comment), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+                  <% end %>
                 </tr>
             <% end %>
             </tbody>

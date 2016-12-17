@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :user_authentication
   before_action :current_user
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :find_tutor
@@ -31,13 +32,13 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.tutor=@tutor
-    @comment.user=@user
+    @comment.tutor = @tutor
+    @comment.user = @user
 
     respond_to do |format|
       if @comment.save
 
-        format.html { redirect_to tutor_path(@tutor), notice: 'Comment was successfully created.' }
+        format.html { redirect_to tutor_path(@tutor), notice: 'Thanks for your comments.' }
         # format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -80,16 +81,14 @@ class CommentsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def comment_params
     params.require(:comment).permit(:rate, :body)
-
-
   end
 
 
   def find_tutor
     if params[:tutor_id]
-      @tutor=Tutor.find(params[:tutor_id])
+      @tutor = Tutor.find(params[:tutor_id])
     else
-      @tutor=@comment.tutor
+      @tutor = @comment.tutor
 
     end
   end
