@@ -1,13 +1,27 @@
-README.md
 
-#Look4Tutor is an application that helps connect students and tutors. 
-* The technology stack includes Ruby and Rails, Ajax, Postgres, Google Map API, and jQuery, ReactJS. 
+#Look4Tutor
+
+［Deploy on Heroku］(https://look4tutor.herokuapp.com/)
+
+* It is an application that helps connect students and tutors. 
+
+* The technology stack includes Ruby and Rails, Ajax, PostgreSQL, Google Map API, and jQuery, ReactJS.
+ 
 * Users can communicate with each other online through ReactJS + FireBase DB
+
 * Send email for customer service through an External Mail API
-* private internal conversation and messages history by
-* comments posting by Ajax
+
+* private internal conversation and messages history
+
+* comments and event posting by Ajax
+
 * show tutor's locations by Google Map API
-* schedule lessons through Calendar
+
+* schedule lessons through calendar
+
 * arrange credit card payment by Stripe integrations
-* It has an Admin panel (ActiveAdmin) to 
-* use a state machine to control tutors publishing.
+
+* Admin panel (ActiveAdmin) to CRUD all tables in the database
+ 
+* use a state machine to control tutors publish or draft.
+
