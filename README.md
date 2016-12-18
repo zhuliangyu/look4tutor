@@ -1,7 +1,7 @@
 
 #Look4Tutor
 
-［Deploy on Heroku］(https://look4tutor.herokuapp.com/)
+[Live web deployed on Heroku](https://look4tutor.herokuapp.com/)
 
 * It is an application that helps connect students and tutors. 
 
