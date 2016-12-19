@@ -2,6 +2,8 @@ Rails.application.configure do
 
   Rails.application.routes.default_url_options[:host] = 'look4tutor.herokuapp.com'
 
+  config.action_mailer.perform_deliveries = false
+
 
   # Settings specified here will take precedence over those in config/application.rb.
 
