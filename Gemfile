@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'dotenv-rails', :groups => [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 # Use postgresql as the database for Active Record
@@ -34,6 +34,8 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'devise', '~> 4.2'
 
 gem 'mailboxer'
+
+gem "fog-aws"
 
 # Fullcalendar::Rails
 gem 'fullcalendar-rails'
