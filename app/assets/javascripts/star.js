@@ -21,8 +21,11 @@
 $(document).ready(
     function () {
 
+        $('#comment_rate').val(3.6);
+
         $("#rateYo").rateYo({
             rating: 3.6
+
         });
 
         $("#rateYo").click(function () {
